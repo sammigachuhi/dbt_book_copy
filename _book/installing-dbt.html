@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,7 @@
             <section class="normal" id="section-">
 <div id="installing-dbt" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Installing dbt<a href="installing-dbt.html#installing-dbt" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Now that we’ve seen how to access a dataset inside our data warehouse, now let’s proceed to installing dbt. This section assumes you already have Visual Studio (VS) Code installed. All code in this book has been operated within a Linux environment. For Window’s users, a Linux environment can be enabled by installing the Windows Subsystem for Linux (WSL2) virtualization platform.</p>
+<p>Now that we’ve seen how to access a dataset inside our data warehouse, now let’s proceed to installing dbt. This section assumes you already have Visual Studio (VS) Code installed. All code in this book has been operated within a Linux environment. For Window’s users, a Linux environment can be enabled by installing the <a href="https://www.freecodecamp.org/news/how-to-install-wsl2-windows-subsystem-for-linux-2-on-windows-10/">Windows Subsystem for Linux (WSL2)</a> virtualization platform.</p>
 <div id="setting-the-environment" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Setting the environment<a href="installing-dbt.html#setting-the-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Open your VS Code.</p>
@@ -261,7 +261,7 @@
 </div>
 <div id="connecting-to-your-bigquery-data-warehouse" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Connecting to your BigQuery data warehouse<a href="installing-dbt.html#connecting-to-your-bigquery-data-warehouse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We wish connecting to a data warehouse for dbt were as easy as providing a username and password. However, far from it. But it is definitely possible. To connect dbt to a data warehouse, we use a keyfile. A keyfile is a file that contains encryption keys or licenses for a particular task. The keyfile we shall use shall be the doorway to our data warehouse.</p>
+<p>We wish connecting to a data warehouse for dbt were as easy as providing a username and password. Far from it, but it is definitely possible. To connect dbt to a data warehouse, we use a keyfile. A keyfile is a file that contains encryption keys or licenses for a particular task. The keyfile we shall use shall be the doorway to our data warehouse.</p>
 <p>As the first step, go to your <a href="https://console.cloud.google.com/apis/credentials/wizard">GCP Credentials Wizard</a> page.</p>
 <p>Ensure that your project is set to the dbt project you created in the previous chapter. For my case, I reverted to an earlier created project called <code>dbt_project</code> since my other project <code>dbt_project1</code> started incurring costs.</p>
 <p>For <strong>Credential Type</strong>:</p>
@@ -275,7 +275,7 @@
 <li><p>Type <code>dbt-book</code> as the Service account name or any other name you prefer.</p></li>
 <li><p>From the <strong>Select a role</strong> dropdown, choose <strong>BigQuery Job User</strong> and <strong>BigQuery Data Editor</strong> roles and click <strong>Continue</strong></p></li>
 <li><p>Leave the <strong>Grant users access to this service account</strong> fields blank</p></li>
-<li><p>Once everything is fine it is as good as clicking <strong>Done</strong>!</p></li>
+<li><p>Once everything is fine, it is as good as clicking <strong>Done</strong>!</p></li>
 </ul>
 <p>Your credentials interface will look like this:</p>
 <div class="float">
@@ -313,7 +313,7 @@ Enter a number: 1</code></pre>
 [1] oauth
 [2] service_account
 Desired authentication method option (enter a number): 2</code></pre>
-<p>For the keyfile, provide the path to where you had saved the json file. As a note, this path should be somewhere different than where your dbt project is located. This is because saving the project into Github with your json keys as part of its files will cause Github to raise an alarm and send alert emails. This is because the json keys are never meant to be shared or stored somewhere accessible. They are considered sensitive information.</p>
+<p>For the keyfile, provide the path to where you had saved the json file. As a note, this path should be somewhere different than where your dbt project is located. Github will set off alarms and send alert emails in case it finds the keyfile within your repository. Keyfiles are never meant to be shared or stored somewhere accessible. They are considered sensitive information.</p>
 <pre><code>keyfile (/path/to/bigquery/keyfile.json): /home/sammigachuhi/dbt_credentials/dbt_book.json</code></pre>
 <p>You will also be asked to provide your project ID. This is available under your dbt project’s dashboard under the <strong>Project ID</strong> heading.</p>
 <pre><code>project (GCP project id): dbt-project-437116</code></pre>
@@ -326,7 +326,7 @@ job_execution_timeout_seconds [300]:
 [2] EU
 Desired location option (enter a number): 1
 19:09:24  Profile dbt_book written to /home/sammigachuhi/.dbt/profiles.yml using target&#39;s profile_template.yml and your supplied values. Run &#39;dbt debug&#39; to validate the connection.</code></pre>
-<p>Now, in order to test whether your dbt installation is correct, you will have to change directory into your <code>dbt_book</code> subfolder we created as part of the <code>dbt init</code> prompts. At first, we had created a directory called <code>dbt_book</code> in which we also activated the virtual environment. When we ran <code>dbt init</code> from this directory, we specified our project name to be <code>dbt_book</code> as well. It is from here we want to check if our dbt initialization and access to BigQuery was successful.</p>
+<p>Now, in order to test whether your dbt installation is correct, you will have to change directory (cd) into your <code>dbt_book</code> subfolder we created as part of the <code>dbt init</code> prompts. At first, we had created a directory called <code>dbt_book</code> in which we also activated the virtual environment. When we ran <code>dbt init</code> from this directory, we specified our project name to be <code>dbt_book</code> as well. It is from here we want to check if our dbt initialization and access to BigQuery was successful.</p>
 <p>So move into this subfolder via <code>cd dbt_book/</code>.</p>
 <pre><code>(venv) sammigachuhi@Gachuhi:~/dbt_book$ cd dbt_book/
 (venv) sammigachuhi@Gachuhi:~/dbt_book/dbt_book$ dbt debug</code></pre>

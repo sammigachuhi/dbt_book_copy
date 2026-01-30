@@ -1,13 +1,44 @@
-Welcome! 
+# About
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+Samuel Gachuhi is a geographer who by fate found himself in the programming world. He holds a certificate in data science and machine learning and another in deep learning with Tensorflow from Udemy. He was motivated to write this book on dbt after noticing that most text on dbt was written in a manner only comprehensible to software engineers. Believing that knowledge transfer should be conveyed in a manner that is understandable by all, he sought to write this book in a less technical manner, and infusing it with humour since learning should be enjoyable, not painful.
 
-This template provides a skeleton file structure that you can edit to create your book. 
+## Resources 
 
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
+All the code used in this book has been uploaded to this [Github repository](https://github.com/sammigachuhi/dbt_book_codes). Here is the full link:
 
-Additional resources:
+https://github.com/sammigachuhi/dbt_book_codes 
 
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
+The online version of the book is available from this [link](https://bookdown.org/sammigachuhi/dbt_book/). The online book is better than the Portable Document Format (PDF) version as the latter has some pieces of code trimmed from the edge of the page.
 
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+https://bookdown.org/sammigachuhi/dbt_book/
+
+
+## Copyright 
+
+![copyright](./images/copyright.png)
+
+Attribution-NonCommercial-ShareAlike 4.0 International
+
+You are free to:
+
+- Share — copy and redistribute the material in any medium or format
+
+- Adapt — remix, transform, and build upon the material
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+Under the following terms:
+
+* Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+* NonCommercial — You may not use the material for commercial purposes.
+
+* ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+* No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+**Notices:**
+
+You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
+
+No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.

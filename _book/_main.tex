@@ -80,7 +80,7 @@
 
 \title{dbt and BigQuery: an action oriented approach}
 \author{Samuel Gachuhi Ngugi}
-\date{2024-12-10}
+\date{2024-12-20}
 
 \begin{document}
 \maketitle
@@ -1144,7 +1144,7 @@ As an extra bit of information, all successfully compiled and ran models will ap
 \hypertarget{documentation-1}{%
 \chapter{Documentation}\label{documentation-1}}
 
-In the book \emph{The voyages and adventures of Captain Hatteras} the sailors aboard a ship whose expedition was to the North Pole relied on the writing of former captains, explorers and sailsmen to not only find the best possible route to the North Pole, but also the hazards and the places where coal was hidden. So how does this tie to data engineering and dbt? Well, in any digital organization, there is sure to be some turnover. There is sure to be some new chap who would want to wrap their heads around what the organization was doing, and the data being used. Documentation is one way to enable these experts start on a sure footing, but this is rarely the norm. The good thing with dbt is that it provides a way to create documentation at the same place you write code to transform it, and not in a spare pdf\footnote{Portable Document Format}!
+In the book \emph{The voyages and adventures of Captain Hatteras} the sailors aboard a ship whose expedition was to the North Pole relied on the writing of former captains, explorers and sailsmen to not only find the best possible route to the North Pole, but also the hazards to avoid and the places where coal was hidden for their sustenance. So how does this tie to data engineering and dbt? Well, in any digital organization, there is sure to be some turnover. There is sure to be some new chap who would want to wrap their heads around what the organization had been doing, and the data used. Documentation is one way to enable these experts start on a sure footing, but this is rarely the norm. The good thing with dbt is that it provides a way to create documentation at the same place you write code to transform it, and not in a spare pdf\footnote{Portable Document Format}!
 
 \hypertarget{the-yml-files}{%
 \section{The yml files}\label{the-yml-files}}
@@ -1191,12 +1191,12 @@ Let's go through the above structure briefly.
 \hypertarget{version-2}{%
 \subsection{\texorpdfstring{\texttt{version:\ 2}}{version: 2}}\label{version-2}}
 
-There is a story behind this. It is that at the very beginning of dbt development, the structure was very different and inserting \texttt{version:\ 2} enabled developers know which version of dbt they were working with. Don't expect a \texttt{version:\ 3} to come any time soon, but this is just a required necessity.
+There is a story behind this. It is that at the very beginning of dbt development, the structure was very different and inserting \texttt{version:\ 2} enabled developers know which version of dbt they were working with. Don't expect a \texttt{version:\ 3} to come any time soon, but writing \texttt{version:\ 2} is just the norm but is not mandatory either.
 
 \hypertarget{models-2}{%
 \subsection{\texorpdfstring{\texttt{models}}{models}}\label{models-2}}
 
-Remember when we said that a model in dbt is simply a SQL file? Well, next to the \texttt{name} key which is under this key you specify the name of your SQL file, minus the \texttt{.sql} extension.
+Remember when we said that a model in dbt is simply a SQL file? Well, next to the \texttt{name} you specify the name of your SQL file, minus the \texttt{.sql} extension.
 
 \hypertarget{description}{%
 \subsection{\texorpdfstring{\texttt{description}}{description}}\label{description}}
@@ -1459,7 +1459,7 @@ Below is an example of the \texttt{citi\_trips\_long} model, which has more than
 
 Probably if you've worked on a Windows computer, you must have used Microsoft Defender Full Scan at some point. During or at the end of the scan, some results were displayed. dbt works in almost the same way, only that this time they scan your data.
 
-Tests in dbt are basically assertions of your data. That is, they are just some assumptions that you have of your datasets that are correct. Tests enable one to know: 1) which assumptions are wrong about our data, and 2) which parts of our data diverge from the expected norm. Tests can sometimes feel like something to bemoan, can fail (as all tests do) but the overarching advantage is that they make us understand more about our data. They can also be lifesavers in that they can pinpoint a serious problem which could be harder to debug later on! In a nutshell, dbt tests perform much like a programmatic scan that will only spew out errors of something that is suspicious.
+Tests in dbt are basically assertions of your data. That is, they are just some assumptions of your datasets that are correct. Tests enable one to know: 1) which assumptions are wrong about our data, and 2) which parts of our data diverge from the expected norm. Tests can sometimes feel like something to bemoan, can fail (as some do) but the overarching advantage is that they make us understand more about our data. They can also be lifesavers in that they can pinpoint a serious problem which could be harder to debug later on! In a nutshell, dbt tests perform much like a programmatic scan that will only spew out errors if something is suspicious.
 
 \hypertarget{types-of-tests-in-dbt}{%
 \section{Types of tests in dbt}\label{types-of-tests-in-dbt}}
@@ -1470,11 +1470,10 @@ In dbt, a test can be defined in either of the following two ways:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  generic test - this is a test written in a SQL model and defined inside a YAML file. The test in the YAML file is defined using jinja Macros. dbt comes with four all-batteries included tests namely:
+  generic test - this is a test written in a SQL model and defined inside a YAML file. The test in the YAML file is defined using jinja Macros. dbt comes in with four, all-batteries included tests namely:
 \end{enumerate}
 
 \begin{itemize}
-\tightlist
 \item
   unique - asserts that the column has no repeating values
 \item
@@ -1498,7 +1497,7 @@ Let's start with a dbt out-of-the-box generic test.
 \hypertarget{generic-tests-in-dbt}{%
 \section{Generic tests in dbt}\label{generic-tests-in-dbt}}
 
-We will start with a very simple test, the \texttt{not\_null} test on the \texttt{start\_station\_name} column of \texttt{citi\_trips\_long} model. Surely, unless someone is teleporting from somewhere, every rented bike must have an origin.
+We will start with a very simple test, the \texttt{not\_null} test on the \texttt{start\_station\_name} column of \texttt{citi\_trips\_long} model. Surely, unless someone is teleporting from somewhere, every rented bike must have an origin!
 
 \begin{verbatim}
 
@@ -1552,7 +1551,7 @@ Now let's create a test that will fail on purpose. From a large dataset, obvious
           - unique
 \end{verbatim}
 
-The output is as below. Note that it results in a failure and also shows the path to the SQL query inside the \texttt{target/} directory that was used to carry out the test. If you paste this SQL query from the \texttt{target} directory into your data warehouse, it will return the number of rows that failed the test.
+The output is as below. Note that it results in a failure and also shows the path to the SQL query inside the \texttt{target/} directory that was used to carry out the test. If you paste this SQL query from the \texttt{target} directory into the SQL tab of the BigQuery data warehouse, it will return the number of rows that failed the test.
 
 \begin{verbatim}
 19:23:35  Concurrency: 1 threads (target='dev')
@@ -1594,7 +1593,7 @@ FROM {{ ref('citi_trips_round') }}
 WHERE trip_min_round < 10
 \end{verbatim}
 
-So to perform the litmus test, run our usual magic phrase:
+So to perform the litmus test, run the usual magic phrase:
 
 \begin{verbatim}
 dbt test --select unnecessary_trips
@@ -1656,7 +1655,7 @@ WHERE LENGTH(start_station_name) > 15
 
 In very few words, the above SQL tells dbt to shout out an error if any station name is greater than 15 characters.
 
-Let's create another test that will raise alarms if there are special characters within your \texttt{start\_station\_name}.
+Let's create another test that will raise an alarm if there are special characters within your \texttt{start\_station\_name}.
 
 \begin{verbatim}
 {% test special_characters (model, column_name) %}
@@ -1666,7 +1665,7 @@ LIKE '%^[a-zA-Z0-9+-]%'
 {% endtest %}
 \end{verbatim}
 
-Okay, it's now time for our litmus test. Going back to the \texttt{start\_station\_name} mapping that we have performed some litmus tests, lets also add our two \emph{custom} generic tests of \texttt{long\_character} and \texttt{special\_characters}.
+Okay, it's now time for our litmus test. Going back to the \texttt{start\_station\_name} mapping where we already performed some litmus tests, lets also add our two \emph{custom} generic tests of \texttt{long\_character} and \texttt{special\_characters}.
 
 \begin{verbatim}
 - name: citi_trips_long
@@ -1723,7 +1722,7 @@ There is also another output following the above which shows how many records fa
 
 What if you feel that the \emph{FAIL} alert like in the above tests is shouting too much?! That you would prefer them to be \emph{WARNINGS} because they are non-critical?
 
-You can do so by setting the configuration to display as a warning rather than an error.
+You can do so by setting the configuration to display as a warning rather than as an error.
 
 \begin{verbatim}
 {% test long_characters (model, column_name) %}
@@ -1834,7 +1833,7 @@ What is dbt-expectations? dbt-expectations is an extension package for dbt which
 
 Unless you've used GE, you may be wondering what this is in the first place, and its okay to feel lost. GE is much like tests in the previous chapter, it conducts quality tests on your data, thus flagging those that deviate from the set assertions.
 
-I would put dbt-expectations and GE on the same plane and use an allegory to drive the point home: that of a car. When buying a car, there are some common checklist items, and others bespoke depending on your car model. For example, an ordinary car must have the following features (at least most of them):
+I would put dbt-expectations and GE on the same plane and use an allegory to drive the point home: that of a car. When buying a car, there are some common checklist items, and others bespoke depending on your car model. For example, an ordinary car must have the following features:
 
 \begin{itemize}
 \tightlist
@@ -1952,7 +1951,7 @@ We will perform one test in each category just to exemplify the potential of \te
 \hypertarget{expect_table_row_count_to_equal_other_table}{%
 \subsubsection{\texorpdfstring{\texttt{expect\_table\_row\_count\_to\_equal\_other\_table}}{expect\_table\_row\_count\_to\_equal\_other\_table}}\label{expect_table_row_count_to_equal_other_table}}
 
-Description: Expect the number of rows in a model match another model.
+\textbf{Description}: Expect the number of rows in a model match another model.
 
 We will expect the \texttt{citi\_trips\_round} and the \texttt{citi\_trips\_minutes} tables to have the same number of rows since their respective models used the same \texttt{citi\_bike\_trips} table. Therefore, the two tables should pass this test, or will they?
 
@@ -1995,9 +1994,9 @@ If you click on the destination of the SQL statement and copy the contents to th
 \hypertarget{expect_column_values_to_not_be_null}{%
 \subsubsection{\texorpdfstring{\texttt{expect\_column\_values\_to\_not\_be\_null}}{expect\_column\_values\_to\_not\_be\_null}}\label{expect_column_values_to_not_be_null}}
 
-Description: Expect column values to not be null.
+\textbf{Description}: Expect column values to not be null.
 
-This is a \emph{no-brainer} kind of test. Can you guess which columns in any of our tables in the \texttt{nyc\_bikes} dataset should never be null? Here is a clue, station\_id and station names, unless the biker teleports to or from somewhere!
+This is a \emph{no-brainer} kind of test. Can you guess which columns in any of our tables in the \texttt{nyc\_bikes} dataset should never be null? Here is a clue: station\_id and station names, unless the biker teleports to or from somewhere!
 
 So on the \texttt{my\_models} YAML file, insert the below test on the \texttt{start\_station\_id}, \texttt{start\_station\_name}, \texttt{end\_station\_id} and \texttt{end\_station\_name} fields.
 
@@ -2016,7 +2015,7 @@ A caveat when using the \texttt{dbt\_expectations.expect\_column\_values\_to\_no
 \hypertarget{expect_column_values_to_be_in_set}{%
 \subsubsection{\texorpdfstring{\texttt{expect\_column\_values\_to\_be\_in\_set}}{expect\_column\_values\_to\_be\_in\_set}}\label{expect_column_values_to_be_in_set}}
 
-Description: Expect each column value to be in a given set.
+\textbf{Description}: Expect each column value to be in a given set.
 
 This test works best for where you are sure that a certain column will only accept certain values. A good example is the \texttt{gender} column. There can only be three results: male, female and other. Here we insert the test in our \texttt{citi\_trips\_minutes} and \texttt{citi\_trips\_round} models.
 
@@ -2036,7 +2035,7 @@ If you run the above test for both the \texttt{citi\_trips\_minutes} and \texttt
 \hypertarget{expect_column_value_lengths_to_be_between}{%
 \subsubsection{\texorpdfstring{\texttt{expect\_column\_value\_lengths\_to\_be\_between}}{expect\_column\_value\_lengths\_to\_be\_between}}\label{expect_column_value_lengths_to_be_between}}
 
-Description: Expect column entries to be strings with length between a min\_value value and a max\_value value (inclusive).
+\textbf{Description}: Expect column entries to be strings with length between a min\_value value and a max\_value value (inclusive).
 
 Because our \texttt{citi\_trips\_minutes} table has several null rows, we will put the minimum expected value to be 0. Since we also want to catch those station names with overly long names, we will put the max value as 70. So for both the \texttt{start\_station\_name} and the \texttt{end\_station\_name}, we inserted the following test:
 
@@ -2056,7 +2055,7 @@ We are glad to know both models passed this simple test.
 \hypertarget{expect_column_max_to_be_between}{%
 \subsubsection{\texorpdfstring{\texttt{expect\_column\_max\_to\_be\_between}}{expect\_column\_max\_to\_be\_between}}\label{expect_column_max_to_be_between}}
 
-Description: Expect the column max to be between a min and max value
+\textbf{Description}: Expect the column max to be between a min and max value
 
 You may wonder what the purpose of this test is. But don't dismiss it yet, it can come quite in handy when searching for outlier values. We will demonstrate it in catching overly long bike trips. However, this test needs some background knowledge of your data.
 
@@ -2071,7 +2070,7 @@ SELECT * FROM dbt-project-437116.nyc_bikes.citi_trips_minutes
 WHERE trip_duration_min > 200000;
 \end{verbatim}
 
-Now lets place the limits of our maximum trip duration values to be between the average of 16 and some intermediate value such as 100, 000 minutes (1, 666 hours)!
+Now lets place the limits of our maximum trip duration values to be between the average of 16 and some intermediate value such as 100,000 minutes (1,666 hours)!
 
 \begin{verbatim}
 tests:
@@ -2088,7 +2087,7 @@ That will flag off some errors, but if you change the \texttt{max\_value} parame
 \hypertarget{expect_column_pair_values_a_to_be_greater_than_b}{%
 \subsubsection{\texorpdfstring{\texttt{expect\_column\_pair\_values\_A\_to\_be\_greater\_than\_B}}{expect\_column\_pair\_values\_A\_to\_be\_greater\_than\_B}}\label{expect_column_pair_values_a_to_be_greater_than_b}}
 
-Description: Expect values in column A to be greater than column B.
+\textbf{Description}: Expect values in column A to be greater than column B.
 
 This kind of test comes in handy when you want to ensure that one of your columnar values is greater than, or less than that of a different column. A good example is a comparison of trip duration in seconds in the \texttt{tripduration} column versus the trip duration in minutes from \texttt{trip\_min\_round} column in our \texttt{citi\_trips\_round} table. Definitely time in seconds will always have a greater value in terms of length than the more concise minutes values!
 
@@ -2133,7 +2132,7 @@ Extract the zip folder and copy the \texttt{3e7acf34-19ba-4bf4-8dd2-cf349623dc6b
 \hypertarget{uploading-a-seed-into-your-data-warehouse}{%
 \section{Uploading a seed into your data warehouse}\label{uploading-a-seed-into-your-data-warehouse}}
 
-Believe you me we had a better csv table to upload, one much more related to the NYC bikes dataset. However, because it was \textasciitilde320MB and we want to be economical in upload times and bandwith, we settled for this historical data. Nevertheless, keeping on with this chapter, to upload a seed into a data warehouse, we use this command:
+Believe you me we had a better csv table to upload, one much more related to the NYC bikes dataset. However, because it was \textasciitilde320MB and we want to be economical in the upload time and bandwith, we settled for this historical data. Nevertheless, keeping on with this chapter, to upload a seed into a data warehouse, we use this command:
 
 \begin{verbatim}
 dbt seed
@@ -2166,7 +2165,7 @@ If you go to BigQuery and refresh the contents of your \texttt{nyc\_bikes} datas
 \hypertarget{referencing-seeds-in-models}{%
 \section{Referencing seeds in models}\label{referencing-seeds-in-models}}
 
-Just like you would reference a model in another model, we can also reference seeds in another model. All your need to reference a seed is to place the name of the csv file, excluding the \texttt{.csv} extension inside the \texttt{ref()} function.
+Just like you would reference a model in another model, we can also reference seeds in another model. All you need to reference a seed is to place the name of the csv file, excluding the \texttt{.csv} extension inside the \texttt{ref()} function.
 
 For example, we want to create a view that contains those start station names from our 2014 table that are existent in the \texttt{citi\_trips\_long} model.
 
@@ -2273,7 +2272,7 @@ seeds:
 
 Not much different from the model properties' files we create, isn't it? In this case, the \texttt{name} of the model is not a SQL file but the csv we pushed to the data warehouse. The \texttt{docs} key is not so much important as the \texttt{config} key which we use to set the schema of our seed in the data warehouse.
 
-What's good for the goose is good for the gander. Much akin to the model properties files were we can insert tests and documentation, the same goes for seed properties' files. In the contents of the below properties file of \texttt{nyc\_bikes2014.yml} we have inserted documentation at both the table and column levels. We have also inserted tests at both levels as well.
+What's good for the goose is good for the gander. Much akin to the model properties files where we can insert tests and documentation, the same goes for seed properties' files. In the contents of the below properties file of \texttt{nyc\_bikes2014.yml} we have inserted documentation at both the table and column levels. We have also inserted tests at both levels as well.
 
 \begin{verbatim}
 version: 2
@@ -2336,7 +2335,7 @@ You should see the documentation you created for your seed. The lineage graph sh
 \caption{Documentation on seeds}
 \end{figure}
 
-Every seed at some point is left to grow on its own. We suppose this chapter has provided the necessary nutrition to see you bud to life working with dbt seeds.
+Every seed at some point is left to grow on its own. We suppose this chapter has provided the necessary nutrition to see you bud to life working with dbt seeds!
 
 \hypertarget{sources-1}{%
 \chapter{Sources}\label{sources-1}}
@@ -2680,9 +2679,9 @@ sources:
 \hypertarget{snapshots}{%
 \chapter{Snapshots}\label{snapshots}}
 
-Picture this, there is this lady you have been eyeing, after turning and tossing for several nights, you decide to visit her place because she is currently not anywhere interested in being taken out. When you visit her at the rendezvous, you decide to ask her to take a `selfie' of you and her (big mistake). You think she will send the selfie to you, she never does. Well, that's a true story of yours truly and even though no hard feelings over the incident, snapshots in dbt work in much the same way.
+Picture this, there is this lady you have falled head over heels for. After turning and tossing for several nights, you decide to visit her at her preferred rendezvous because she is currently not anywhere interested in being taken out. When you meet her, you decide to ask her to take a `selfie' of both of you side by side. You think she will send the selfie to you, but she never does. Well, that's a true story of yours truly and even though no hard feelings over the incident, snapshots in dbt work in much the same way.
 
-A snapshot in dbt is a recorded change of a mutable table. Think of a snapshot as a way to track changes in your data. For example, you could be a having a crazy table that logs your relationship status with your girlfriend or boyfriend over time. The first row could be as follows:
+A snapshot in dbt is a recorded change of a mutable table. Think of a snapshot as a way to track changes in your data. For example, you could be having a crazy table that logs your relationship status with your girlfriend or boyfriend over time. The first row could be as follows:
 
 \begin{verbatim}
 |----------|--------------|---------------|
@@ -2691,7 +2690,7 @@ A snapshot in dbt is a recorded change of a mutable table. Think of a snapshot a
 |----------|--------------|---------------|
 \end{verbatim}
 
-Now, let's say you realise something about your girlfriend and boyfriend that puts a freeze on the relationship. So in your relationship table it would have the following update.
+Now, let's say you realise something about your girlfriend and boyfriend that puts a freeze on the relationship. So in your relationship table it would have the following update:
 
 \begin{verbatim}
 |----------|--------------|---------------|
@@ -2700,7 +2699,7 @@ Now, let's say you realise something about your girlfriend and boyfriend that pu
 |----------|--------------|---------------|
 \end{verbatim}
 
-Our above update will have overwritten the previous record of `Spark' when the relationship was at cloud nine. dbt offers a way to preserve these past records so that they can be used for further analysis, or for posterity purposes. For example, keeping a record of the change can be used to analyse how long the relationship lasted from its hey days to when the waves started beating the ship. This kind of analysis can be used for more serious matters, such as when analyzing the time it takes from sending to receiving an order. dbt will help you record these changes and log the time when the change took place. For example, our dbt snapshot for our relationship would be:
+Our above update will have overwritten the previous record of `Spark' when the relationship was at cloud nine. dbt offers a way to preserve these past records so that they can be used for further analysis, and also for posterity purposes. For example, keeping a record of the change can be used to analyse how long the relationship lasted from its hey days to when the waves started beating the ship. This kind of analysis can be used for more serious matters, such as when analyzing the time it takes from sending to receiving an order. dbt will help you record these changes and log the time when the change took place. For example, our dbt snapshot for our relationship would be:
 
 \textbar----------\textbar--------------\textbar---------------\textbar----------------\textbar--------------\textbar{}
 \textbar{} id \textbar{} Status \textbar{} updated-at \textbar{} dbt\_valid\_from \textbar{} dbt\_valid\_to \textbar{}
@@ -2708,7 +2707,7 @@ Our above update will have overwritten the previous record of `Spark' when the r
 \textbar{} 11 \textbar{} Shaky \textbar{} 22/10/2024 \textbar{} 22/10/2024 \textbar{} null \textbar{}
 \textbar----------\textbar--------------\textbar---------------\textbar----------------\textbar--------------\textbar{}
 
-The most up-to-date record will have a value of \texttt{null} in the \texttt{dbt\_valid\_to} field. Here is a description of the last two fields and those used internally by dbt.
+The most up-to-date record will have a value of \texttt{null} in the \texttt{dbt\_valid\_to} field. Here is a description of the last two fields and others internally used by dbt.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2719,7 +2718,7 @@ The most up-to-date record will have a value of \texttt{null} in the \texttt{dbt
 \item
   \texttt{dbt\_scd\_id} - A unique key generated for each tracked record. This is used internally by dbt.
 \item
-  \texttt{dbt\_updated\_at} - The updated\_at timestamp of the source record when this snapshot row was inserted. This is used internally by dbt.
+  \texttt{dbt\_updated\_at} - The updated\_at timestamp of the source record when this snapshot row was inserted. This is internally used by dbt.
 \end{enumerate}
 
 Slowly Changing Dimension (SCD) refers to the way data changes over time in a data warehouse. In today's world, one wouldn't say that data changes slowly, but the term arises from the fact that even though data may change infrequently, such as makeups and breakups in your relationship, they are significant over time even to the future of the relationship or the continuity of your business!
@@ -3325,7 +3324,7 @@ Let's start by explaining some jinja concepts.
 \item
   \textbf{Expressions \{\{ \ldots{} \}\}}: Expressions are used when you want to output a string. You can use expressions to reference variables and call macros.
 \item
-  \textbf{Statements \{\% \ldots{} \%\}}: Statements don't output a string. They are used for control flow, for example, to set up for loops and if statements, to set or modify variables, or to define macros.
+  \textbf{Statements \{\% \ldots{} \%\}}: Statements don't output a string. They are used for control flow, for example, to set up \emph{for} loops and \emph{if} statements, to set or modify variables, or to define macros.
 \item
   \textbf{Comments \{\# \ldots{} \#\}}: Jinja comments are used to prevent the text within the comment from executing or outputing a string.
 \end{itemize}
@@ -3789,7 +3788,7 @@ FROM
 {{ ref('citi_trips_long') }}
 \end{verbatim}
 
-In the sub-chapter of \protect\hyperlink{ux5cux23Invokingux5cux2520aux5cux2520macro}{Invoking a Macro}, we saw that a macro is invoked in the following format: \texttt{\{\{\ macro\_name(arg1,\ arg2,\ argN)\ \}\}}. The macro name goes first, followed by the arguments in brackets. We have essentially done this in the \texttt{biker\_age} SQL file. The \texttt{calclate\_age()} macro has been provided the column to calculate on, the \texttt{birth\_year} column. We use the \texttt{AS} keyword to create a new column with the alias \texttt{AGE}. Thereafter, we run the open sesame command \texttt{dbt\ compile\ -\/-select\ macros}.
+In the sub-chapter of \protect\hyperlink{ux5cux23Invokingux5cux2520aux5cux2520macro}{Invoking a Macro}, we saw that a macro is invoked in the following format: \texttt{\{\{\ macro\_name(arg1,\ arg2,\ argN)\ \}\}}. The macro name goes first, followed by the arguments in brackets. We have essentially done this in the \texttt{biker\_age} SQL file. The \texttt{calculate\_age()} macro has been provided the column to calculate on; the \texttt{birth\_year} column. We use the \texttt{AS} keyword to create a new column with the alias \texttt{AGE}. Thereafter, we run the open sesame command \texttt{dbt\ compile\ -\/-select\ macros}.
 
 After compilation, dbt created a \texttt{biker\_age} SQL file containing the below code:
 
@@ -3921,7 +3920,7 @@ Pasting the above in BigQuery gives us an aggregation of the total trip duration
 \caption{Age trip total 2 view}
 \end{figure}
 
-As mentioned earlier, and as show with a quick example of \texttt{age\_trip\_totals} model, we can create views of each of our macro models. Since they are all within the jinja directory, the following does the trick: \texttt{dbt\ run\ -\/-select\ jinja}. This should create a view of each of our models created in this chapter.
+As mentioned earlier, and as shown with a quick example of \texttt{age\_trip\_totals} model, we can create views of each of our macro models. Since they are all within the jinja directory, the following does the trick: \texttt{dbt\ run\ -\/-select\ jinja}. This should create a view of each of our models created in this chapter.
 
 Below is a snippet of the creation of views.
 
@@ -3941,7 +3940,7 @@ Below is a snippet of the creation of views.
 \hypertarget{hooks}{%
 \chapter{Hooks}\label{hooks}}
 
-At one time, I posed a question to a well-versed data engineer of why the technological space seems to be awash with exotic outlandish names. Hooks in dbt seem to fit into the calibre of these outlandish names\ldots{} for there is nothing regarding its purpose in dbt which seems to suggest it will lure and capture your data.
+At one time, I posed a question to a well-versed data engineer of why the technological space seems to be awash with exotic, outlandish names. Hooks in dbt seem to fit into the calibre of these outlandish names\ldots{} for there is nothing regarding its purpose in dbt which seems to suggest it will lure and capture your data.
 
 You could take hooks as customized SQL models that are out of the box when it comes to dbt. There are various forms of hooks, namely:
 
@@ -3979,7 +3978,7 @@ We tried creating a simple post-hook but no matter what we tried, \texttt{dbt} k
 \hypertarget{hosting-dbt-generated-documentation}{%
 \chapter{Hosting dbt generated documentation}\label{hosting-dbt-generated-documentation}}
 
-Imagine you have put blood, sweat and tears into your book, you have said everything you wanted to say, divulged what was considered secret, and unearthed what was incomprehensible. Except for one thing: you can't publish it. That would be a disaster, a mockery of your efforts, yet that would be our portion if we had not published the dbt documentation we had created in \protect\hyperlink{documentation}{Chapter 7}. After all is said and done, it has to be printed somewhere, and obviously the world wide web is our playground.
+Imagine you have put blood, sweat and tears into your book, you have said everything you wanted to say, divulged what was considered secret, and unearthed what was incomprehensible. Except for one thing: you can't publish it. That would be a disaster, a mockery of your efforts, yet that would be our portion if we had not published the dbt documentation we had created in \protect\hyperlink{documentation}{Chapter 7}. After all is said and done, it has to be displayed somewhere, and obviously the world wide web is our playground.
 
 There are various ways to publish your dbt generated documentation, such as in Github, Google Cloud and Azure Devops. We would have loved to host our dbt generated documentation in Google cloud as that would have put us in the league of astute developers, but the process and costs were a bit too much. Therefore, we slid back to \href{https://medium.com/dbt-local-taiwan/host-dbt-documentation-site-with-github-pages-in-5-minutes-7b80e8b62feb}{Github} which is totally free.
 
@@ -4055,7 +4054,7 @@ Click on the link to go to your hosted dbt documentation. Access the dbt generat
 \hypertarget{conclusion}{%
 \chapter{Conclusion}\label{conclusion}}
 
-Our journey of learning data build tool (dbt) has taken us from how to set it up, creating models, setting up seeds, taking snapshots of data, and using jinja and macros to create custom functions. Finally, as the final nail on the coffin, we saw how to set up an externally hosted dbt website on Github. Except for insufficient knowledge on hooks and how to host a dbt website on Google cloud, it is our wish that this book will enable you to come to speed with using dbt in your data. With the growth of using data warehouses and exploiting big data already happening in various institutions, we are sure dbt will always be one of the key tools for data handling.
+Our journey of learning data build tool (dbt) has taken us from how to set it up, creating models, setting up seeds, taking snapshots of data, and using jinja and macros to create custom functions. Finally, as the final nail on the coffin, we saw how to set up an externally hosted dbt website on Github. Except for insufficient knowledge on hooks and how to host a dbt website on Google cloud, it is our wish that this book will enable you to come to speed with using dbt on your data. With the growth of using data warehouses and exploiting big data already happening in various institutions, we are sure dbt will always be one of the key tools for data handling.
 
 \emph{FINIS}
 

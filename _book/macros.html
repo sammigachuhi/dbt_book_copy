@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -322,7 +322,7 @@ WHERE CREATE_DATE &gt;= &#39;2020-02-18&#39;::DATE</code></pre>
 FROM 
 {{ ref(&#39;citi_trips_long&#39;) }}
 </code></pre>
-<p>In the sub-chapter of <a href="#id_#Invoking%20a%20macro">Invoking a Macro</a>, we saw that a macro is invoked in the following format: <code>{{ macro_name(arg1, arg2, argN) }}</code>. The macro name goes first, followed by the arguments in brackets. We have essentially done this in the <code>biker_age</code> SQL file. The <code>calclate_age()</code> macro has been provided the column to calculate on, the <code>birth_year</code> column. We use the <code>AS</code> keyword to create a new column with the alias <code>AGE</code>. Thereafter, we run the open sesame command <code>dbt compile --select macros</code>.</p>
+<p>In the sub-chapter of <a href="#id_#Invoking%20a%20macro">Invoking a Macro</a>, we saw that a macro is invoked in the following format: <code>{{ macro_name(arg1, arg2, argN) }}</code>. The macro name goes first, followed by the arguments in brackets. We have essentially done this in the <code>biker_age</code> SQL file. The <code>calculate_age()</code> macro has been provided the column to calculate on; the <code>birth_year</code> column. We use the <code>AS</code> keyword to create a new column with the alias <code>AGE</code>. Thereafter, we run the open sesame command <code>dbt compile --select macros</code>.</p>
 <p>After compilation, dbt created a <code>biker_age</code> SQL file containing the below code:</p>
 <pre><code>SELECT *, 
 
@@ -420,7 +420,7 @@ ORDER BY AGE DESC
 <img src="images/age_trip_totals2.png" alt="Age trip total 2 view" />
 <div class="figcaption">Age trip total 2 view</div>
 </div>
-<p>As mentioned earlier, and as show with a quick example of <code>age_trip_totals</code> model, we can create views of each of our macro models. Since they are all within the jinja directory, the following does the trick: <code>dbt run --select jinja</code>. This should create a view of each of our models created in this chapter.</p>
+<p>As mentioned earlier, and as shown with a quick example of <code>age_trip_totals</code> model, we can create views of each of our macro models. Since they are all within the jinja directory, the following does the trick: <code>dbt run --select jinja</code>. This should create a view of each of our models created in this chapter.</p>
 <p>Below is a snippet of the creation of views.</p>
 <pre><code>-- snip --
 20:15:05  8 of 8 START sql view model nyc_bikes.age_trip_totals2 ......................... [RUN]

@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -249,7 +249,7 @@
 <p>Extract the zip folder and copy the <code>3e7acf34-19ba-4bf4-8dd2-cf349623dc6b.csv</code> inside the <code>dbt_book/seeds</code> directory. To reduce the verbosity of its name, rename it to <code>2014-tripdata.csv</code>.</p>
 <div id="uploading-a-seed-into-your-data-warehouse" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> Uploading a seed into your data warehouse<a href="seeds.html#uploading-a-seed-into-your-data-warehouse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Believe you me we had a better csv table to upload, one much more related to the NYC bikes dataset. However, because it was ~320MB and we want to be economical in upload times and bandwith, we settled for this historical data. Nevertheless, keeping on with this chapter, to upload a seed into a data warehouse, we use this command:</p>
+<p>Believe you me we had a better csv table to upload, one much more related to the NYC bikes dataset. However, because it was ~320MB and we want to be economical in the upload time and bandwith, we settled for this historical data. Nevertheless, keeping on with this chapter, to upload a seed into a data warehouse, we use this command:</p>
 <pre><code>dbt seed</code></pre>
 <p>After that, it’s a test of patience. Depending on your upload speeds, it shouldn’t take long to upload a 36MB file to BigQuery.</p>
 <pre><code>-- snip --
@@ -272,7 +272,7 @@
 </div>
 <div id="referencing-seeds-in-models" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> Referencing seeds in models<a href="seeds.html#referencing-seeds-in-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Just like you would reference a model in another model, we can also reference seeds in another model. All your need to reference a seed is to place the name of the csv file, excluding the <code>.csv</code> extension inside the <code>ref()</code> function.</p>
+<p>Just like you would reference a model in another model, we can also reference seeds in another model. All you need to reference a seed is to place the name of the csv file, excluding the <code>.csv</code> extension inside the <code>ref()</code> function.</p>
 <p>For example, we want to create a view that contains those start station names from our 2014 table that are existent in the <code>citi_trips_long</code> model.</p>
 <p>Within the <code>models/my_models</code> directory, create the <code>citi_stations_2014.sql</code> model with the following query:</p>
 <pre><code>{{ config(materialized=&#39;view&#39;) }}
@@ -343,7 +343,7 @@ seeds:
     config:
       schema: nyc_bikes2014</code></pre>
 <p>Not much different from the model properties’ files we create, isn’t it? In this case, the <code>name</code> of the model is not a SQL file but the csv we pushed to the data warehouse. The <code>docs</code> key is not so much important as the <code>config</code> key which we use to set the schema of our seed in the data warehouse.</p>
-<p>What’s good for the goose is good for the gander. Much akin to the model properties files were we can insert tests and documentation, the same goes for seed properties’ files. In the contents of the below properties file of <code>nyc_bikes2014.yml</code> we have inserted documentation at both the table and column levels. We have also inserted tests at both levels as well.</p>
+<p>What’s good for the goose is good for the gander. Much akin to the model properties files where we can insert tests and documentation, the same goes for seed properties’ files. In the contents of the below properties file of <code>nyc_bikes2014.yml</code> we have inserted documentation at both the table and column levels. We have also inserted tests at both levels as well.</p>
 <pre><code>version: 2
 
 seeds:
@@ -392,7 +392,7 @@ seeds:
 <img src="images/seed_documentation.png" alt="Documentation on seeds" />
 <div class="figcaption">Documentation on seeds</div>
 </div>
-<p>Every seed at some point is left to grow on its own. We suppose this chapter has provided the necessary nutrition to see you bud to life working with dbt seeds.</p>
+<p>Every seed at some point is left to grow on its own. We suppose this chapter has provided the necessary nutrition to see you bud to life working with dbt seeds!</p>
 
 </div>
 </div>

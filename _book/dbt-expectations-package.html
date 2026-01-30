@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -244,7 +244,7 @@
 <h1><span class="header-section-number">Chapter 10</span> dbt Expectations package<a href="dbt-expectations-package.html#dbt-expectations-package" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>What is dbt-expectations? dbt-expectations is an extension package for dbt which works much akin to the Great Expectations package for Python. It was intentionally designed to provide Great Expectations like features in dbt, but now from dbt itself rather than integrating Great Expectations (GE).</p>
 <p>Unless you’ve used GE, you may be wondering what this is in the first place, and its okay to feel lost. GE is much like tests in the previous chapter, it conducts quality tests on your data, thus flagging those that deviate from the set assertions.</p>
-<p>I would put dbt-expectations and GE on the same plane and use an allegory to drive the point home: that of a car. When buying a car, there are some common checklist items, and others bespoke depending on your car model. For example, an ordinary car must have the following features (at least most of them):</p>
+<p>I would put dbt-expectations and GE on the same plane and use an allegory to drive the point home: that of a car. When buying a car, there are some common checklist items, and others bespoke depending on your car model. For example, an ordinary car must have the following features:</p>
 <ul>
 <li>have four wheels</li>
 <li>have a driver’s seat</li>
@@ -306,7 +306,7 @@
 <h3><span class="header-section-number">10.2.1</span> Table shape<a href="dbt-expectations-package.html#table-shape" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="expect_table_row_count_to_equal_other_table" class="section level4 hasAnchor" number="10.2.1.1">
 <h4><span class="header-section-number">10.2.1.1</span> <code>expect_table_row_count_to_equal_other_table</code><a href="dbt-expectations-package.html#expect_table_row_count_to_equal_other_table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Description: Expect the number of rows in a model match another model.</p>
+<p><strong>Description</strong>: Expect the number of rows in a model match another model.</p>
 <p>We will expect the <code>citi_trips_round</code> and the <code>citi_trips_minutes</code> tables to have the same number of rows since their respective models used the same <code>citi_bike_trips</code> table. Therefore, the two tables should pass this test, or will they?</p>
 <p>Since we only want to concentrate on the models within the <code>my_models</code> directory, just run: <code>dbt test --select models/my_models</code></p>
 <p>Here is the output.</p>
@@ -334,8 +334,8 @@
 <h3><span class="header-section-number">10.2.2</span> Missing values, unique values, and types<a href="dbt-expectations-package.html#missing-values-unique-values-and-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="expect_column_values_to_not_be_null" class="section level4 hasAnchor" number="10.2.2.1">
 <h4><span class="header-section-number">10.2.2.1</span> <code>expect_column_values_to_not_be_null</code><a href="dbt-expectations-package.html#expect_column_values_to_not_be_null" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Description: Expect column values to not be null.</p>
-<p>This is a <em>no-brainer</em> kind of test. Can you guess which columns in any of our tables in the <code>nyc_bikes</code> dataset should never be null? Here is a clue, station_id and station names, unless the biker teleports to or from somewhere!</p>
+<p><strong>Description</strong>: Expect column values to not be null.</p>
+<p>This is a <em>no-brainer</em> kind of test. Can you guess which columns in any of our tables in the <code>nyc_bikes</code> dataset should never be null? Here is a clue: station_id and station names, unless the biker teleports to or from somewhere!</p>
 <p>So on the <code>my_models</code> YAML file, insert the below test on the <code>start_station_id</code>, <code>start_station_name</code>, <code>end_station_id</code> and <code>end_station_name</code> fields.</p>
 <pre><code>tests:
   - dbt_expectations.expect_column_values_to_not_be_null</code></pre>
@@ -347,7 +347,7 @@
 <h3><span class="header-section-number">10.2.3</span> Sets and Ranges<a href="dbt-expectations-package.html#sets-and-ranges" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="expect_column_values_to_be_in_set" class="section level4 hasAnchor" number="10.2.3.1">
 <h4><span class="header-section-number">10.2.3.1</span> <code>expect_column_values_to_be_in_set</code><a href="dbt-expectations-package.html#expect_column_values_to_be_in_set" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Description: Expect each column value to be in a given set.</p>
+<p><strong>Description</strong>: Expect each column value to be in a given set.</p>
 <p>This test works best for where you are sure that a certain column will only accept certain values. A good example is the <code>gender</code> column. There can only be three results: male, female and other. Here we insert the test in our <code>citi_trips_minutes</code> and <code>citi_trips_round</code> models.</p>
 <pre><code>- name: gender
   description: &quot;Gender (unknown, male, female)&quot;
@@ -362,7 +362,7 @@
 <h3><span class="header-section-number">10.2.4</span> String matching<a href="dbt-expectations-package.html#string-matching" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="expect_column_value_lengths_to_be_between" class="section level4 hasAnchor" number="10.2.4.1">
 <h4><span class="header-section-number">10.2.4.1</span> <code>expect_column_value_lengths_to_be_between</code><a href="dbt-expectations-package.html#expect_column_value_lengths_to_be_between" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Description: Expect column entries to be strings with length between a min_value value and a max_value value (inclusive).</p>
+<p><strong>Description</strong>: Expect column entries to be strings with length between a min_value value and a max_value value (inclusive).</p>
 <p>Because our <code>citi_trips_minutes</code> table has several null rows, we will put the minimum expected value to be 0. Since we also want to catch those station names with overly long names, we will put the max value as 70. So for both the <code>start_station_name</code> and the <code>end_station_name</code>, we inserted the following test:</p>
 <pre><code>tests:
   - dbt_expectations.expect_column_values_to_not_be_null
@@ -376,7 +376,7 @@
 <h3><span class="header-section-number">10.2.5</span> Aggregate<a href="dbt-expectations-package.html#aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="expect_column_max_to_be_between" class="section level4 hasAnchor" number="10.2.5.1">
 <h4><span class="header-section-number">10.2.5.1</span> <code>expect_column_max_to_be_between</code><a href="dbt-expectations-package.html#expect_column_max_to_be_between" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Description: Expect the column max to be between a min and max value</p>
+<p><strong>Description</strong>: Expect the column max to be between a min and max value</p>
 <p>You may wonder what the purpose of this test is. But don’t dismiss it yet, it can come quite in handy when searching for outlier values. We will demonstrate it in catching overly long bike trips. However, this test needs some background knowledge of your data.</p>
 <p>Applying the below queries on BigQuery will help.</p>
 <pre><code>SELECT AVG(trip_duration_min) FROM dbt-project-437116.nyc_bikes.citi_trips_minutes; -- 16
@@ -385,7 +385,7 @@ SELECT MAX(trip_duration_min) FROM dbt-project-437116.nyc_bikes.citi_trips_minut
 
 SELECT * FROM dbt-project-437116.nyc_bikes.citi_trips_minutes
 WHERE trip_duration_min &gt; 200000;</code></pre>
-<p>Now lets place the limits of our maximum trip duration values to be between the average of 16 and some intermediate value such as 100, 000 minutes (1, 666 hours)!</p>
+<p>Now lets place the limits of our maximum trip duration values to be between the average of 16 and some intermediate value such as 100,000 minutes (1,666 hours)!</p>
 <pre><code>tests:
   - dbt_expectations.expect_column_max_to_be_between:
       min_value: 16 # (Optional)
@@ -397,7 +397,7 @@ WHERE trip_duration_min &gt; 200000;</code></pre>
 <h3><span class="header-section-number">10.2.6</span> Multi-column<a href="dbt-expectations-package.html#multi-column" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="expect_column_pair_values_a_to_be_greater_than_b" class="section level4 hasAnchor" number="10.2.6.1">
 <h4><span class="header-section-number">10.2.6.1</span> <code>expect_column_pair_values_A_to_be_greater_than_B</code><a href="dbt-expectations-package.html#expect_column_pair_values_a_to_be_greater_than_b" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Description: Expect values in column A to be greater than column B.</p>
+<p><strong>Description</strong>: Expect values in column A to be greater than column B.</p>
 <p>This kind of test comes in handy when you want to ensure that one of your columnar values is greater than, or less than that of a different column. A good example is a comparison of trip duration in seconds in the <code>tripduration</code> column versus the trip duration in minutes from <code>trip_min_round</code> column in our <code>citi_trips_round</code> table. Definitely time in seconds will always have a greater value in terms of length than the more concise minutes values!</p>
 <p>In our <code>citi_trips_round</code> model, insert the test as follows:</p>
 <pre><code>- name: citi_trips_round

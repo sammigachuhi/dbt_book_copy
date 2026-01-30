@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -338,7 +338,7 @@ from source_data
 
 select *
 from source_data</code></pre>
-<p>This is a WITH SQL statement. In very simple terms, the SQL statement in parentheses <code>()</code> is what is referenced as <code>source_data</code>. Once we define our SQL statement and close it with parentheses, we can now select the data referenced by <code>source_data</code>.</p>
+<p>This is a <code>WITH</code> SQL statement. In very simple terms, the SQL statement in parentheses <code>()</code> is what is referenced as <code>source_data</code>. Once we define our SQL statement and close it with parentheses, we can now select the data referenced by <code>source_data</code>.</p>
 <p>The SQL statements in parentheses is what is referred to as <a href="https://www.atlassian.com/data/sql/using-common-table-expressions">Common Table Expression (CTE)</a>. They were designed to simplify complex queries and be used in the context of a larger query.</p>
 <p>The second model doesn’t have much to provide but it introduces a new trick: the <code>ref</code> function.</p>
 <pre><code>select *
@@ -396,7 +396,7 @@ SELECT * FROM citi_trips
 <pre><code>SELECT * FROM `dbt-project-437116.nyc_bikes.citi_trips_minutes` 
 </code></pre>
 <p>Our <code>trip_duration_min</code> column of interest is onto the far right of our view.</p>
-<p>We had hinted earlier that there is no limit to the complexity or number of models you can create in dbt. Below is a more complex model. This model not only rounds off the minutes to one decimal place but also removes the null columns, thus reducing number of rows from 58, 937, 715 to 53, 108, 721. The model is saved as <code>citi_trips_round.sql</code>.</p>
+<p>We had hinted earlier that there is no limit to the complexity or number of models you can create in dbt. Below is a more complex model. This model not only rounds off the minutes to one decimal place but also removes the null columns, thus reducing number of rows from 58,937,715 to 53,108,721. The model is saved as <code>citi_trips_round.sql</code>.</p>
 <pre><code>{{ config(materialized=&#39;view&#39;) }}
 
 WITH citi_trips_round AS (

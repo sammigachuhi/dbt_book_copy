@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -243,18 +243,18 @@
 <div id="tests-1" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Tests<a href="tests-1.html#tests-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Probably if you’ve worked on a Windows computer, you must have used Microsoft Defender Full Scan at some point. During or at the end of the scan, some results were displayed. dbt works in almost the same way, only that this time they scan your data.</p>
-<p>Tests in dbt are basically assertions of your data. That is, they are just some assumptions that you have of your datasets that are correct. Tests enable one to know: 1) which assumptions are wrong about our data, and 2) which parts of our data diverge from the expected norm. Tests can sometimes feel like something to bemoan, can fail (as all tests do) but the overarching advantage is that they make us understand more about our data. They can also be lifesavers in that they can pinpoint a serious problem which could be harder to debug later on! In a nutshell, dbt tests perform much like a programmatic scan that will only spew out errors of something that is suspicious.</p>
+<p>Tests in dbt are basically assertions of your data. That is, they are just some assumptions of your datasets that are correct. Tests enable one to know: 1) which assumptions are wrong about our data, and 2) which parts of our data diverge from the expected norm. Tests can sometimes feel like something to bemoan, can fail (as some do) but the overarching advantage is that they make us understand more about our data. They can also be lifesavers in that they can pinpoint a serious problem which could be harder to debug later on! In a nutshell, dbt tests perform much like a programmatic scan that will only spew out errors if something is suspicious.</p>
 <div id="types-of-tests-in-dbt" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Types of tests in dbt<a href="tests-1.html#types-of-tests-in-dbt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In dbt, a test can be defined in either of the following two ways:</p>
 <ol style="list-style-type: decimal">
-<li>generic test - this is a test written in a SQL model and defined inside a YAML file. The test in the YAML file is defined using jinja Macros. dbt comes with four all-batteries included tests namely:</li>
+<li>generic test - this is a test written in a SQL model and defined inside a YAML file. The test in the YAML file is defined using jinja Macros. dbt comes in with four, all-batteries included tests namely:</li>
 </ol>
 <ul>
-<li>unique - asserts that the column has no repeating values</li>
-<li>not_null - asserts that there are no null values</li>
-<li>accepted_values - checks if the values in your field correspond to those in a defined list</li>
-<li>relationships - checks if the field has an existing relationship with another field in a different table.</li>
+<li><p>unique - asserts that the column has no repeating values</p></li>
+<li><p>not_null - asserts that there are no null values</p></li>
+<li><p>accepted_values - checks if the values in your field correspond to those in a defined list</p></li>
+<li><p>relationships - checks if the field has an existing relationship with another field in a different table.</p></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li>singular test - some normally refer to this as a custom test. This is a SQL query which is used to check assertions in your data. The SQL files that make up your test are defined inside the <code>tests</code> directory or the path defined in the <code>test-paths</code> key inside the <code>dbt_project.yml</code> file. Each SQL file will have one test only. Nevertheless, if this test will be used across many fields and files, you can reference it using jinja macros <code>{{ }}</code>. If this is the case, it is no longer a singular test but a generic <em>custom</em> test.</li>
@@ -263,7 +263,7 @@
 </div>
 <div id="generic-tests-in-dbt" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Generic tests in dbt<a href="tests-1.html#generic-tests-in-dbt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We will start with a very simple test, the <code>not_null</code> test on the <code>start_station_name</code> column of <code>citi_trips_long</code> model. Surely, unless someone is teleporting from somewhere, every rented bike must have an origin.</p>
+<p>We will start with a very simple test, the <code>not_null</code> test on the <code>start_station_name</code> column of <code>citi_trips_long</code> model. Surely, unless someone is teleporting from somewhere, every rented bike must have an origin!</p>
 <pre><code>
 - name: citi_trips_long
     description: &#39;{{ doc(&quot;citi_trips_long&quot;) }}&#39;
@@ -301,7 +301,7 @@
         tests:
           - not_null
           - unique</code></pre>
-<p>The output is as below. Note that it results in a failure and also shows the path to the SQL query inside the <code>target/</code> directory that was used to carry out the test. If you paste this SQL query from the <code>target</code> directory into your data warehouse, it will return the number of rows that failed the test.</p>
+<p>The output is as below. Note that it results in a failure and also shows the path to the SQL query inside the <code>target/</code> directory that was used to carry out the test. If you paste this SQL query from the <code>target</code> directory into the SQL tab of the BigQuery data warehouse, it will return the number of rows that failed the test.</p>
 <pre><code>19:23:35  Concurrency: 1 threads (target=&#39;dev&#39;)
 19:23:35  
 19:23:35  1 of 2 START test not_null_citi_trips_long_start_station_name .................. [RUN]
@@ -334,7 +334,7 @@
 FROM {{ ref(&#39;citi_trips_round&#39;) }}
 WHERE trip_min_round &lt; 10
 </code></pre>
-<p>So to perform the litmus test, run our usual magic phrase:</p>
+<p>So to perform the litmus test, run the usual magic phrase:</p>
 <pre><code>dbt test --select unnecessary_trips
 </code></pre>
 <p>Below will be the output.</p>
@@ -374,14 +374,14 @@ WHERE LENGTH({{ column_name }}) &gt; 15
 WHERE LENGTH(start_station_name) &gt; 15 
 </code></pre>
 <p>In very few words, the above SQL tells dbt to shout out an error if any station name is greater than 15 characters.</p>
-<p>Let’s create another test that will raise alarms if there are special characters within your <code>start_station_name</code>.</p>
+<p>Let’s create another test that will raise an alarm if there are special characters within your <code>start_station_name</code>.</p>
 <pre><code>{% test special_characters (model, column_name) %}
 SELECT * FROM {{ model }}
 WHERE {{ column_name }}
 LIKE &#39;%^[a-zA-Z0-9+-]%&#39;
 {% endtest %}
 </code></pre>
-<p>Okay, it’s now time for our litmus test. Going back to the <code>start_station_name</code> mapping that we have performed some litmus tests, lets also add our two <em>custom</em> generic tests of <code>long_character</code> and <code>special_characters</code>.</p>
+<p>Okay, it’s now time for our litmus test. Going back to the <code>start_station_name</code> mapping where we already performed some litmus tests, lets also add our two <em>custom</em> generic tests of <code>long_character</code> and <code>special_characters</code>.</p>
 <pre><code>- name: citi_trips_long
     description: &#39;{{ doc(&quot;citi_trips_long&quot;) }}&#39;
     columns:
@@ -427,7 +427,7 @@ LIKE &#39;%^[a-zA-Z0-9+-]%&#39;
 <div id="configuring-custom-generic-tests" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> Configuring custom generic tests<a href="tests-1.html#configuring-custom-generic-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What if you feel that the <em>FAIL</em> alert like in the above tests is shouting too much?! That you would prefer them to be <em>WARNINGS</em> because they are non-critical?</p>
-<p>You can do so by setting the configuration to display as a warning rather than an error.</p>
+<p>You can do so by setting the configuration to display as a warning rather than as an error.</p>
 <pre><code>{% test long_characters (model, column_name) %}
     {{ config(severity = &#39;warn&#39;) }}
     SELECT * FROM {{ model }}

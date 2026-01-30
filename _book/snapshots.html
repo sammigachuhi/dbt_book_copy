@@ -23,7 +23,7 @@
 <meta name="author" content="Samuel Gachuhi Ngugi" />
 
 
-<meta name="date" content="2024-12-05" />
+<meta name="date" content="2024-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,29 +242,29 @@
             <section class="normal" id="section-">
 <div id="snapshots" class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">Chapter 13</span> Snapshots<a href="snapshots.html#snapshots" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Picture this, there is this lady you have been eyeing, after turning and tossing for several nights, you decide to visit her place because she is currently not anywhere interested in being taken out. When you visit her at the rendezvous, you decide to ask her to take a ‘selfie’ of you and her (big mistake). You think she will send the selfie to you, she never does. Well, that’s a true story of yours truly and even though no hard feelings over the incident, snapshots in dbt work in much the same way.</p>
-<p>A snapshot in dbt is a recorded change of a mutable table. Think of a snapshot as a way to track changes in your data. For example, you could be a having a crazy table that logs your relationship status with your girlfriend or boyfriend over time. The first row could be as follows:</p>
+<p>Picture this, there is this lady you have falled head over heels for. After turning and tossing for several nights, you decide to visit her at her preferred rendezvous because she is currently not anywhere interested in being taken out. When you meet her, you decide to ask her to take a ‘selfie’ of both of you side by side. You think she will send the selfie to you, but she never does. Well, that’s a true story of yours truly and even though no hard feelings over the incident, snapshots in dbt work in much the same way.</p>
+<p>A snapshot in dbt is a recorded change of a mutable table. Think of a snapshot as a way to track changes in your data. For example, you could be having a crazy table that logs your relationship status with your girlfriend or boyfriend over time. The first row could be as follows:</p>
 <pre><code>|----------|--------------|---------------|
 | id       |  Status      | updated-at    |
 | 11       |  Spark       | 21/09/2024    |
 |----------|--------------|---------------|</code></pre>
-<p>Now, let’s say you realise something about your girlfriend and boyfriend that puts a freeze on the relationship. So in your relationship table it would have the following update.</p>
+<p>Now, let’s say you realise something about your girlfriend and boyfriend that puts a freeze on the relationship. So in your relationship table it would have the following update:</p>
 <pre><code>|----------|--------------|---------------|
 | id       |  Status      | updated-at    |
 | 11       |  Shaky       | 22/10/2024    |
 |----------|--------------|---------------|</code></pre>
-<p>Our above update will have overwritten the previous record of ‘Spark’ when the relationship was at cloud nine. dbt offers a way to preserve these past records so that they can be used for further analysis, or for posterity purposes. For example, keeping a record of the change can be used to analyse how long the relationship lasted from its hey days to when the waves started beating the ship. This kind of analysis can be used for more serious matters, such as when analyzing the time it takes from sending to receiving an order. dbt will help you record these changes and log the time when the change took place. For example, our dbt snapshot for our relationship would be:</p>
+<p>Our above update will have overwritten the previous record of ‘Spark’ when the relationship was at cloud nine. dbt offers a way to preserve these past records so that they can be used for further analysis, and also for posterity purposes. For example, keeping a record of the change can be used to analyse how long the relationship lasted from its hey days to when the waves started beating the ship. This kind of analysis can be used for more serious matters, such as when analyzing the time it takes from sending to receiving an order. dbt will help you record these changes and log the time when the change took place. For example, our dbt snapshot for our relationship would be:</p>
 <p>|———-|————–|—————|—————-|————–|
 | id | Status | updated-at | dbt_valid_from | dbt_valid_to |
 | 11 | Spark | 21/09/2024 | 21/09/2024 | 22/10/2024 |
 | 11 | Shaky | 22/10/2024 | 22/10/2024 | null |
 |———-|————–|—————|—————-|————–|</p>
-<p>The most up-to-date record will have a value of <code>null</code> in the <code>dbt_valid_to</code> field. Here is a description of the last two fields and those used internally by dbt.</p>
+<p>The most up-to-date record will have a value of <code>null</code> in the <code>dbt_valid_to</code> field. Here is a description of the last two fields and others internally used by dbt.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>dbt_valid_from</code> - The timestamp when this snapshot row was first inserted. This column can be used to order the different “versions” of a record.</p></li>
 <li><p><code>dbt_valid_to</code> - The timestamp when this row became invalidated. The most recent snapshot record will have <code>dbt_valid_to</code> set to null.</p></li>
 <li><p><code>dbt_scd_id</code> - A unique key generated for each tracked record. This is used internally by dbt.</p></li>
-<li><p><code>dbt_updated_at</code> - The updated_at timestamp of the source record when this snapshot row was inserted. This is used internally by dbt.</p></li>
+<li><p><code>dbt_updated_at</code> - The updated_at timestamp of the source record when this snapshot row was inserted. This is internally used by dbt.</p></li>
 </ol>
 <p>Slowly Changing Dimension (SCD) refers to the way data changes over time in a data warehouse. In today’s world, one wouldn’t say that data changes slowly, but the term arises from the fact that even though data may change infrequently, such as makeups and breakups in your relationship, they are significant over time even to the future of the relationship or the continuity of your business!</p>
 <p>SCDs are typically of three types:</p>
