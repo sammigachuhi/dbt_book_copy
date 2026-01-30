@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Chapter 4 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01-intro.html" />
+    <link rel="next" href="05-installing-dbt.html" />
     
+    
+    <link rel="prev" href="03-data-storage.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -139,7 +141,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="04-our-data.html">
+        <li class="chapter active" data-level="1.5" data-path="04-our-data.html">
             
                 <a href="04-our-data.html">
             
@@ -377,7 +379,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Chapter 4</a>
     </h1>
 </div>
 
@@ -392,38 +394,69 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="about">About</h1>
-<p>Samuel Gachuhi is a geographer who by fate found himself in the programming world. He holds a certificate in data science and machine learning and another in deep learning with Tensorflow from Udemy. He was motivated to write this book on dbt after noticing that most text on dbt was written in a manner only comprehensible to software engineers. Believing that knowledge transfer should be conveyed in a manner that is understandable by all, he sought to write this book in a less technical manner, and infusing it with humour since learning should be enjoyable, not painful.</p>
-<h2 id="resources">Resources</h2>
-<p>All the code used in this book has been uploaded to this <a href="https://github.com/sammigachuhi/dbt_book_codes" target="_blank">Github repository</a>. Here is the full link:</p>
-<p><a href="https://github.com/sammigachuhi/dbt_book_codes" target="_blank">https://github.com/sammigachuhi/dbt_book_codes</a> </p>
-<p>The online version of the book is available from this <a href="https://bookdown.org/sammigachuhi/dbt_book/" target="_blank">link</a>. The online book is better than the Portable Document Format (PDF) version as the latter has some pieces of code trimmed from the edge of the page.</p>
-<p><a href="https://bookdown.org/sammigachuhi/dbt_book/" target="_blank">https://bookdown.org/sammigachuhi/dbt_book/</a></p>
-<h2 id="copyright">Copyright</h2>
-<p><img src="images/copyright.png" alt="copyright"></p>
-<p>Attribution-NonCommercial-ShareAlike 4.0 International</p>
-<p>You are free to:</p>
+                                <h1 id="our-data-in-bigquery">Our data in BigQuery</h1>
+<p>In an earlier chapter, we saw that in data engineering data mainly goes through three processes: extract, load and transform (ELT). The Extract, Transform, Load (ELT) is more of a traditional approach and we will not use it in this case. We will be using Google Bigquery as our data warehouse when working with dbt.</p>
+<p>As a reminder, let&apos;s go through the definitions of ELT.</p>
+<p>Extract - the process of identifying and reading data from one or more source systems. We won&apos;t have to do this since the New York City (NYC) bikes data that will be using has already been <em>extracted</em> from its source by BigQuery creators. </p>
+<p>Load - the process of adding the extracted data to the data warehouse, --in this case Google BigQuery. Again, Google has done this for us. Therefore we won&apos;t have to do it. </p>
+<p>Transform - the process of converting data from its raw format to the format that it will be used for analysis. This falls definitely within our forte. And we shall use dbt for this. Examples of data transformations that can be done with SQL modeling in dbt are:</p>
 <ul>
-<li><p>Share &#x2014; copy and redistribute the material in any medium or format</p>
+<li>Replacing codes with values</li>
+<li>Aggregating numerical sums</li>
+<li>Applying mathematical functions (SQL can do some maths too, but can be very verbose here)</li>
+<li>Converting data types</li>
+<li>Modifying text strings</li>
+<li>Combining data from different tables and databases.</li>
+</ul>
+<h2 id="accessing-big-query">Accessing Big Query</h2>
+<p>BigQuery is a data warehouse provided by Google. </p>
+<p>To access it, open an incognito window and go to this <a href="https://cloud.google.com/" target="_blank">link</a>. Sign in using your gmail account. </p>
+<p>Click on <strong>Console</strong> button at the top right. That step of bravery will take you to an interface that looks like this:</p>
+<p><img src="images/gcp_interface.png" alt="GCP Interface"></p>
+<p>Click on the dropdown at the top. Select <strong>NEW PROJECT</strong>. We want to create a new project that will contain some tables that we will work with in dbt.</p>
+<p>Name your project as <code>dbt-project1</code> or any other name you prefer. Then select <strong>CREATE</strong>. </p>
+<p>Once the project has been created, you will be returned to the original page as at first. However, when you select the project dropdown again, you should see your newly created project as one of the options.</p>
+<p><img src="images/gcp_project.png" alt="GCP Project"></p>
+<p>Click on your project, the interface will refresh and the dropdown should now reflect <code>dbt-project1</code>.</p>
+<p>Click on the <strong>Dashboard</strong> link on the homepage. </p>
+<p>The below interface should appear. It can seem overwhelming at first. Lots of things in one place.</p>
+<p><img src="images/dashboard.png" alt="Dashboard"></p>
+<p>In one of the &quot;boxes&quot; within the <strong>Dashboard</strong> tab, you will find one called <strong>Resources</strong> with the <strong>BigQuery</strong> button underneath. Click on this button. It will take you to a page asking you to <em>Enable the BigQuery Application Programming Interface (API)</em>. Do comply!</p>
+<p>Behold, below is the BigQuery interface.</p>
+<p><img src="images/bigquery_interface.png" alt="BigQuery interface"> </p>
+<p>You will see one of the resources as <code>dbt_project1&lt;some-random-number&gt;</code> in case you had other resources. Star this project for quick access in future.</p>
+<h2 id="copying-the-new-york-city-bikes-data">Copying the New York City Bikes data</h2>
+<p>One of the datasets we will be working with is the &quot;New York City Bikes dataset&quot;. To access it, click on the <strong>ADD</strong> button. A sidebar will open up. Go to <strong>Public Datasets</strong>.</p>
+<p>In the <strong>Search Marketplace</strong> searchbar, type &apos;bikes&apos;. </p>
+<p><img src="images/marketplace.png" alt="Marketplace"></p>
+<p>Click on the NYC Citi Bike Trips tab. A new sidebar will popup with a button of <strong>View Dataset</strong>. Click this button and the Google Cloud Platform (GCP) Dashboard will reappear but this time round the <code>bigquery-public-data</code> resource will appear.</p>
+<p>Click on this particular resource&apos;s dropdown on the left and scroll down to the <code>new_york_citibike</code> dataset. We want to copy this dataset from that of <code>bigquery-public-data</code> to that of <code>dbt_project1-437718</code>. The random numbers will be different in your case.</p>
+<p>Scroll up again to your <code>dbt_project1</code> resource. On the kebab menu on the right of this resource, select <em>Create Dataset</em>. </p>
+<p><img src="images/create_dataset.png" alt="Create dataset"></p>
+<p>A new sidebar will open. Insert the following for each parameter:</p>
+<ul>
+<li><p>Dataset ID - <code>nyc_bikes</code></p>
 </li>
-<li><p>Adapt &#x2014; remix, transform, and build upon the material</p>
+<li><p>Location type - <code>Region</code></p>
+</li>
+<li><p>Region - <code>africa-south1 (Johannesburg)</code> or your preferred region</p>
 </li>
 </ul>
-<p>The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
-<p>Under the following terms:</p>
+<p>Thereafter, click on <strong>CREATE DATASET</strong>. </p>
+<p>The <code>nyc_bikes</code> dataset should now appear under the <code>dbt-project1</code> resource. We want to copy the contents of the <code>new_york_citibike</code> dataset into our <code>nyc_bikes</code> dataset. So how do we proceed?</p>
+<p>Scroll down to the <code>new_york_citibike</code> dataset under the <code>bigquery-public-data</code> resource and click on it. On the menu for this dataset, you will see the <strong>Copy</strong> button. Click on this button. </p>
+<p><img src="images/copy.png" alt="Copy dataset"></p>
+<p><img src="images/copy_sidebar.png" alt="Copy sidebar"></p>
+<p>In the <strong>Destination</strong> searchbar, type <code>nyc_bikes</code> in reference to where we want to copy the contents into. You may need to enable the data transfer API to perform the copy operation. Do so if BigQuery necessitates that <em>it</em> must be enabled.</p>
+<p>Once you copy the dataset, a small bar will appear on the screen saying <strong>View Details</strong>. Click on it to stop the run operation since BigQuery will be rerunning the copy operation after every 24 hours. Disable the transfer process and delete it. </p>
+<p>Going back to your <code>dbt_project1</code> resource, your <code>nyc_bikes</code> dataset should now be having two tables under it. That is:</p>
 <ul>
-<li><p>Attribution &#x2014; You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</p>
-</li>
-<li><p>NonCommercial &#x2014; You may not use the material for commercial purposes.</p>
-</li>
-<li><p>ShareAlike &#x2014; If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</p>
-</li>
-<li><p>No additional restrictions &#x2014; You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</p>
-</li>
+<li>citibike_stations</li>
+<li>citibike_trips</li>
 </ul>
-<p><strong>Notices:</strong></p>
-<p>You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.</p>
-<p>No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.</p>
+<p>Click on any of the tables and preview the data therein using the <strong>PREVIEW</strong> button of each tables&apos; interface. </p>
+<p><img src="images/table_interface.png" alt="Table"></p>
+<p>Congratulations on loading your first table in BigQuery!</p>
 
                                 
                                 </section>
@@ -451,8 +484,12 @@
 
             
                 
+                <a href="03-data-storage.html" class="navigation navigation-prev " aria-label="Previous page: Chapter 3">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="01-intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Chapter 1">
+                
+                <a href="05-installing-dbt.html" class="navigation navigation-next " aria-label="Next page: Chapter 5">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -463,7 +500,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Chapter 1","level":"1.2","depth":1,"path":"01-intro.md","ref":"01-intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"README.md","mtime":"2026-01-30T18:06:00.001Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-30T18:46:51.546Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Chapter 4","level":"1.5","depth":1,"next":{"title":"Chapter 5","level":"1.6","depth":1,"path":"05-installing-dbt.md","ref":"05-installing-dbt.md","articles":[]},"previous":{"title":"Chapter 3","level":"1.4","depth":1,"path":"03-data-storage.md","ref":"03-data-storage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"04-our-data.md","mtime":"2024-12-10T13:12:03.550Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-30T18:46:51.546Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

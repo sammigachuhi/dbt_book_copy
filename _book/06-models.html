@@ -1,0 +1,646 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Chapter 6 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="07-documentation.html" />
+    
+    
+    <link rel="prev" href="05-installing-dbt.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01-intro.html">
+            
+                <a href="01-intro.html">
+            
+                    
+                    Chapter 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="02-dbt-structure.html">
+            
+                <a href="02-dbt-structure.html">
+            
+                    
+                    Chapter 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="03-data-storage.html">
+            
+                <a href="03-data-storage.html">
+            
+                    
+                    Chapter 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="04-our-data.html">
+            
+                <a href="04-our-data.html">
+            
+                    
+                    Chapter 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="05-installing-dbt.html">
+            
+                <a href="05-installing-dbt.html">
+            
+                    
+                    Chapter 5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="06-models.html">
+            
+                <a href="06-models.html">
+            
+                    
+                    Chapter 6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="07-documentation.html">
+            
+                <a href="07-documentation.html">
+            
+                    
+                    Chapter 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="08-tests.html">
+            
+                <a href="08-tests.html">
+            
+                    
+                    Chapter 8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="09-dbt-expectations.html">
+            
+                <a href="09-dbt-expectations.html">
+            
+                    
+                    Chapter 9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="10-seeds.html">
+            
+                <a href="10-seeds.html">
+            
+                    
+                    Chapter 10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="11-sources.html">
+            
+                <a href="11-sources.html">
+            
+                    
+                    Chapter 11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="12-snapshots.html">
+            
+                <a href="12-snapshots.html">
+            
+                    
+                    Chapter 12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="13-analyses.html">
+            
+                <a href="13-analyses.html">
+            
+                    
+                    Chapter 13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="14-exposures.html">
+            
+                <a href="14-exposures.html">
+            
+                    
+                    Chapter 14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="15-jinja.html">
+            
+                <a href="15-jinja.html">
+            
+                    
+                    Chapter 15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="16-macros.html">
+            
+                <a href="16-macros.html">
+            
+                    
+                    Chapter 16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="17-hooks.html">
+            
+                <a href="17-hooks.html">
+            
+                    
+                    Chapter 17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="18-dbt-publishing.html">
+            
+                <a href="18-dbt-publishing.html">
+            
+                    
+                    Chapter 18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="19-conclusion.html">
+            
+                <a href="19-conclusion.html">
+            
+                    
+                    Chapter 19
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Chapter 6</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="models">Models</h1>
+<p>A model in dbt is any SQL file. It is what dbt will use to build tables, views and any other transformations in your data warehouse. In dbt, models are executed with the hit and run command: <code>dbt run</code>.</p>
+<h2 id="running-a-model">Running a model</h2>
+<p>dbt did us a very big favour during installation; it came with two models already created for us. These are namely the <code>my_first_dbt_model.sql</code> and <code>my_second_dbt_model.sql</code> within the <code>models/example</code> directory. It also provided a <code>schema.yml</code> file within the same directory which provides definitions for the models&apos; schema. </p>
+<p>Alright. Assuming that you are within the <code>dbt_book</code> subdirectory and your virtual environment <code>(venv)</code> already activated, type <code>dbt run</code> in your terminal like so:</p>
+<pre><code>(venv) sammigachuhi@Gachuhi:~/dbt_book/dbt_book$ dbt run
+</code></pre><p>This will initiate a series of printouts. However, before we go to the expected output, you may run into an error related to the location not being found. </p>
+<pre><code>404 Not found: Dataset dbt-project-437116:nyc_bikes was not found in location US; reason: notFound, message: Not found: Dataset dbt-project-437116:nyc_bikes was not found in location US
+</code></pre><p>When we were initializing our project using <code>dbt init</code> we selected option 1 for US. Luckily, there is a work around to this. It involves editing the <code>projects.yml</code> file. If you run <code>dbt debug</code> it will also show the path of your <code>projects.yml</code> alongside other configuration information. </p>
+<pre><code>18:19:56  Running with dbt=1.8.7
+18:19:56  dbt version: 1.8.7
+18:19:56  python version: 3.10.12
+18:19:56  python path: /home/sammigachuhi/dbt_book/venv/bin/python3
+18:19:56  os info: Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.35
+18:19:57  Using profiles dir at /home/sammigachuhi/.dbt
+18:19:57  Using profiles.yml file at /home/sammigachuhi/.dbt/profiles.yml
+--snip--
+</code></pre><p>Go to the provided path for <code>profiles.yml</code> which, in my case, is found at the path - <code>/home/sammigachuhi/.dbt</code>. Open it and change the line with <code>location</code> to read from <code>US</code> to <code>africa-south1</code>.</p>
+<pre><code>dbt_book:
+  outputs:
+    dev:
+      dataset: nyc_bikes
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /home/sammigachuhi/dbt_credentials/dbt_book.json
+      location: africa-south1 
+--snip---
+</code></pre><p>Now come back, and rerun <code>dbt run</code> again. dbt should now be able to run against your warehouse and create a table called <code>my_first_dbt_model</code> and a view <code>my_second_dbt_model</code> in BigQuery. </p>
+<p>&quot;How do I know that my queries ran successfully?&quot;, you may ask. It is when the terminal prints out: <code>Completed successfully</code>. Beneath this message, will be a single line statement of the number of models ran and if there have been any errors. We had two models, so we expect to see this reflect in the log. And it did.</p>
+<pre><code>18:21:16  Running with dbt=1.8.7
+18:21:17  Registered adapter: bigquery=1.8.2
+18:21:17  Unable to do partial parsing because saved manifest not found. Starting full parse.
+18:21:19  Found 2 models, 4 data tests, 479 macros
+18:21:19  
+18:21:22  Concurrency: 1 threads (target=&apos;dev&apos;)
+18:21:22  
+18:21:22  1 of 2 START sql table model nyc_bikes.my_first_dbt_model ...................... [RUN]
+18:21:30  1 of 2 OK created sql table model nyc_bikes.my_first_dbt_model ................. [CREATE TABLE (2.0 rows, 0 processed) in 7.83s]
+18:21:30  2 of 2 START sql view model nyc_bikes.my_second_dbt_model ...................... [RUN]
+18:21:34  2 of 2 OK created sql view model nyc_bikes.my_second_dbt_model ................. [CREATE VIEW (0 processed) in 4.01s]
+18:21:34  
+18:21:34  Finished running 1 table model, 1 view model in 0 hours 0 minutes and 14.88 seconds (14.88s).
+18:21:34  
+18:21:34  Completed successfully
+18:21:34  
+18:21:34  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+</code></pre><p>The second way, and the most obvious, is checking the results in your BigQuery data warehouse. If you see the table and view <code>my_first_dbt_model</code> and <code>my_second_dbt_model</code> respectively, the query ran successfully. </p>
+<p><img src="images/model_outputs.png" alt="Models"></p>
+<p>It was that simple, isn&apos;t it?</p>
+<h2 id="model-structure">Model structure</h2>
+<p>Let&apos;s take a look at the model <code>my_first_dbt_model.sql</code>. </p>
+<pre><code>
+{{ config(materialized=&apos;table&apos;) }}
+
+with source_data as (
+
+    select 1 as id
+    union all
+    select null as id
+
+)
+
+select *
+from source_data
+
+/*
+    Uncomment the line below to remove records with null `id` values
+*/
+
+-- where id is not null
+</code></pre><p>The line <code>{{ config(materialized=&apos;table&apos;) }}</code> tells dbt to make the output <code>my_first_dbt_model</code> as a table. Any configurations set at the model level will overide the overarching ones set at <code>dbt_project.yml</code> file. </p>
+<p>If you quickly take a sneek peek at the <code>dbt_project.yml</code> file and scroll to the bottom, you will see this configuration:</p>
+<pre><code>models:
+  dbt_book:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
+</code></pre><p>This configuration simply says that for every model inside the <code>dbt_book/example</code> directory, materialize the result as a view^[A view is a virtual table, similar to the original table, the physical dataset it was created from]. However, inside our <code>my_first_dbt_model.sql</code> file, we set the materialization as <code>table</code>. What is in the sql model will override what is in the <code>dbt_project.yml</code>. However, for <code>my_second_dbt_model.sql</code>, we didn&apos;t specify the materialization. Therefore, by default, the materialization specified at the <code>dbt_project.yml</code> level will be used.</p>
+<p><a href="https://docs.getdbt.com/docs/build/materializations" target="_blank">Materialization</a> is the persistence of a model in the data warehouse. </p>
+<p>The second part of our first model is the actual SQL statement.</p>
+<pre><code>with source_data as (
+
+    select 1 as id
+    union all
+    select null as id
+
+)
+
+select *
+from source_data
+</code></pre><p>This is a <code>WITH</code> SQL statement. In very simple terms, the SQL statement in parentheses <code>()</code> is what is referenced as <code>source_data</code>. Once we define our SQL statement and close it with parentheses, we can now select the data referenced by <code>source_data</code>. </p>
+<p>The SQL statements in parentheses is what is referred to as <a href="https://www.atlassian.com/data/sql/using-common-table-expressions" target="_blank">Common Table Expression (CTE)</a>. They were designed to simplify complex queries and be used in the context of a larger query. </p>
+<p>The second model doesn&apos;t have much to provide but it introduces a new trick: the <code>ref</code> function.</p>
+<pre><code>select *
+from {{ ref(&apos;my_first_dbt_model&apos;) }}
+where id = 1
+
+</code></pre><p>{% endraw %}</p>
+<p>The <code>ref</code> function is part of the jinja templating language. It is used to reference a model that has been provided within the parentheses and enclosed with quotes <code>(&apos;&apos;)</code>. Therefore, in essence, our model simply returns the row(s) from <code>my_first_dbt_model</code> that contain the value <code>1</code> in the <code>id</code> column.</p>
+<p>Here is the result of <code>my_second_dbt_model</code> view when I query BigQuery to show its contents.</p>
+<p><img src="images/second_model.png" alt="Second model"></p>
+<h2 id="a-custom-model">A custom model</h2>
+<p>Now that we have seen how to run our models, it&apos;s now time to fold our shirts and run our own custom model. </p>
+<p>Let&apos;s start easy. If you know SQL, there is no limit to the models, both in number and complexity, that you can do in dbt.</p>
+<p>Our first model will endeavour to perform a change on the <code>citi_trips</code> table within our <code>nyc_bikes</code> dataset. In this dataset, there is a column called <code>tripduration</code> which shows the time in seconds for every cab trip. Humans prefer to read in minutes so a trivial dbt job would involve creating a column that shows the <code>tripduration</code> in minutes. By doing so, dbt would be performing the <strong>T</strong>ransform part in the ELT. </p>
+<p>In the <code>citi_trips_minutes.sql</code> model, we have written a code that creates a view of this result. Remember, views are just virtual tables but they do save on storage!</p>
+<pre><code>{{ config(materialized=&apos;view&apos;) }}
+
+WITH citi_trips AS (
+    SELECT *, 
+    tripduration / 60 AS trip_duration_min
+    FROM 
+    `dbt-project-437116.nyc_bikes.citibike_trips` 
+)
+
+SELECT * FROM citi_trips
+</code></pre><p>The above SQL statement is also a form of Common Table Expression (CTE). The variable <code>citi_trips</code> just references the SQL statement in parentheses.</p>
+<p>There is another small trick of the trade. What if this very simple dbt model was just part of thousands, and longer running SQL models? Would we have to run the entire lot of models? No. To run only a specific model we use the <code>--select</code> keyword.</p>
+<p>Below we run the <code>citi_trips_minutes</code> model.</p>
+<pre><code>dbt run --select models/example/citi_trips_minutes.sql
+</code></pre><p>Below is the output.</p>
+<pre><code>Concurrency: 1 threads (target=&apos;dev&apos;)
+18:50:33  
+18:50:33  1 of 1 START sql view model nyc_bikes.citi_trips_minutes ....................... [RUN]
+18:50:37  1 of 1 OK created sql view model nyc_bikes.citi_trips_minutes .................. [CREATE VIEW (0 processed) in 4.53s]
+18:50:37  
+18:50:37  Finished running 1 view model in 0 hours 0 minutes and 8.17 seconds (8.17s).
+18:50:37  
+18:50:37  Completed successfully
+18:50:37  
+18:50:37  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+</code></pre><p>We are always glad when we see the soothing words &quot;Completed successfully&quot;. If you go to BigQuery, you will see a new view  <code>citi_trips_minutes</code> already created. By default, the name of the newly formed view or table in the data warehouse will be that of the model used to create it.</p>
+<p>Similar to the above, the below run command will also work. It doesn&apos;t have the file type (<code>.sql</code>) suffix.</p>
+<pre><code>dbt run --select citi_trips_minutes
+</code></pre><p>But how do we view this newly created result. Unlike a table, BigQuery does not offer the <strong>PREVIEW</strong> button. However, there is a way...</p>
+<p><img src="images/query_button.png" alt="Query"></p>
+<p>Click on the <strong>Query</strong> button, select <strong>In new tab</strong> and a new tab will form. Copy this SQL query onto the tab and run it to display the result of our <code>citi_trips_minutes</code> view. </p>
+<pre><code>SELECT * FROM `dbt-project-437116.nyc_bikes.citi_trips_minutes`
+</code></pre><p>Our <code>trip_duration_min</code> column of interest is onto the far right of our view.</p>
+<p>We had hinted earlier that there is no limit to the complexity or number of models you can create in dbt. Below is a more complex model. This model not only rounds off the minutes to one decimal place but also removes the null columns, thus reducing number of rows from 58,937,715 to 53,108,721. The model is saved as <code>citi_trips_round.sql</code>. </p>
+<pre><code>{{ config(materialized=&apos;view&apos;) }}
+
+WITH citi_trips_round AS (
+    SELECT *, ROUND(trip_duration_min, 1) AS trip_min_round
+    FROM (
+        SELECT *, 
+        tripduration / 60 AS trip_duration_min
+        FROM 
+        `dbt-project-437116.nyc_bikes.citibike_trips`
+        ) 
+    WHERE tripduration IS NOT NULL
+)
+
+SELECT * FROM citi_trips_round
+</code></pre><p>Our model is saved as the <code>citi_trips_round</code> view in BigQuery. </p>
+<p>Create a new query tab in BigQuery to view the results. Also use the query tab to count the number of rows and compare them to those from the <code>citibike_trips</code> table. About 5.8 million rows with null value have been removed.</p>
+<pre><code>SELECT * FROM `dbt-project-437116.nyc_bikes.citi_trips_round`; 
+
+SELECT COUNT(*) FROM `dbt-project-437116.nyc_bikes.citi_trips_round`;
+
+-- This is the count of the original citibike_trips table
+SELECT COUNT(*) FROM `dbt-project-437116.nyc_bikes.citibike_trips`;
+</code></pre><p>You may be wondering what&apos;s the advantage that dbt provides. After all, can&apos;t one just use the SQL Query tab in BigQuery just to do the transformations and save the table? Fine, that can work. However, dbt offers a form of persistence to your models. Though modifiable like those in BigQuery, they can be versioned when saved into a code versioning platform like Github.</p>
+<p>One more thing, you don&apos;t have to use the <code>models/example</code> folder. You can choose to rename this one, or save the two models we created in a different folder. They will still run fine. </p>
+<p>Create a new folder within the <code>models</code> directory called <code>my_models</code>. Move the <code>citi_trips_minutes</code> and <code>citi_trips_round</code> models into the <code>my_models</code> directory. Thereafter, run these two models using <code>dbt run --select models/my_models</code>. The models should run just fine. </p>
+<p>As an extra bit of information, all successfully compiled and ran models will appear under the <code>/target</code> directory.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="05-installing-dbt.html" class="navigation navigation-prev " aria-label="Previous page: Chapter 5">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="07-documentation.html" class="navigation navigation-next " aria-label="Next page: Chapter 7">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Chapter 6","level":"1.7","depth":1,"next":{"title":"Chapter 7","level":"1.8","depth":1,"path":"07-documentation.md","ref":"07-documentation.md","articles":[]},"previous":{"title":"Chapter 5","level":"1.6","depth":1,"path":"05-installing-dbt.md","ref":"05-installing-dbt.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"06-models.md","mtime":"2026-01-30T18:39:33.762Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-30T18:46:51.546Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

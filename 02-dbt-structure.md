@@ -20,6 +20,7 @@ This is the component of dbt that you will most likely work with. In dbt, a mode
 
 Below is an example of a model that creates a table called `customers`. The model is saved as `customers.sql`.
 
+
 ```
 with customer_orders as (
     select
@@ -45,6 +46,7 @@ from jaffle_shop.customers
 
 left join customer_orders using (customer_id)
 ```
+
 
 ## Tests
 
@@ -91,6 +93,7 @@ For custom tests, these involve one creating a SQL model and referencing it in a
 
 For example, here is a custom test written in a SQL file called `transaction_limit_test.sql`. 
 
+
 ```
 -- tests/transaction_limit_test.sql
 select user_id, sum(transaction_amount) as total_spent
@@ -100,6 +103,7 @@ having total_spent > 10000  -- Assuming the limit is 10,000
 
 
 ```
+
 
 The test is referenced in a YAML file and called over a column called `transactions`. 
 
@@ -138,7 +142,9 @@ Documentation will be performed where you have placed your tests. There is also 
 
 A short example of the jinja templates' documentation is shown below. The description is within a markdown file (`.md`) other than the one containing my field names. The descriptions will be like so:
 
+
 ```
+
 {% docs table_events %}
 
 I am not so very robust, but I’ll do the best I can.
@@ -153,7 +159,9 @@ Some text here
 
 ```
 
+
 So when one returns to their YAML file, they will reference the particular field of interest with the above description like so:
+
 
 ```
 version: 2
@@ -171,9 +179,11 @@ models:
 
 ```
 
+
 ## Sources 
 
-`sources` enable one query the data in your data warehouse. Once you specify the existing table in your data warehouse under the `sources` key, you can access every data from within this table using SQL. To work with a source table, you first have to wrap it inside a `{{ source(table-name) }}` jinja template. Below is an example of how to declare a source.
+`sources` enable one query the data in your data warehouse. Once you specify the existing table in your data warehouse under the `sources` key, you can access every data from within this table using SQL. To work with a source table, you first have to wrap it inside a  `{{ source(table-name) }}`  jinja template. Below is an example of how to declare a source.
+
 
 ```
 version: 2
@@ -194,6 +204,7 @@ sources:
 
 You can reference the above source inside a SQL model like so:
 
+
 ```
 select
   ...
@@ -204,6 +215,7 @@ left join {{ source('jaffle_shop', 'customers') }} using (customer_id)
 
 
 ```
+
 
 dbt will thereafter know that it will perform some operations using data from the `orders` and `customers` data from the `jaffle_shop` --the origin of all our data in this example.
 

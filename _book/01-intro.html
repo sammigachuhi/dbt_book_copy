@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Chapter 1 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01-intro.html" />
+    <link rel="next" href="02-dbt-structure.html" />
     
+    
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -100,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="01-intro.html">
+        <li class="chapter active" data-level="1.2" data-path="01-intro.html">
             
                 <a href="01-intro.html">
             
@@ -377,7 +379,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Chapter 1</a>
     </h1>
 </div>
 
@@ -392,38 +394,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="about">About</h1>
-<p>Samuel Gachuhi is a geographer who by fate found himself in the programming world. He holds a certificate in data science and machine learning and another in deep learning with Tensorflow from Udemy. He was motivated to write this book on dbt after noticing that most text on dbt was written in a manner only comprehensible to software engineers. Believing that knowledge transfer should be conveyed in a manner that is understandable by all, he sought to write this book in a less technical manner, and infusing it with humour since learning should be enjoyable, not painful.</p>
-<h2 id="resources">Resources</h2>
-<p>All the code used in this book has been uploaded to this <a href="https://github.com/sammigachuhi/dbt_book_codes" target="_blank">Github repository</a>. Here is the full link:</p>
-<p><a href="https://github.com/sammigachuhi/dbt_book_codes" target="_blank">https://github.com/sammigachuhi/dbt_book_codes</a> </p>
-<p>The online version of the book is available from this <a href="https://bookdown.org/sammigachuhi/dbt_book/" target="_blank">link</a>. The online book is better than the Portable Document Format (PDF) version as the latter has some pieces of code trimmed from the edge of the page.</p>
-<p><a href="https://bookdown.org/sammigachuhi/dbt_book/" target="_blank">https://bookdown.org/sammigachuhi/dbt_book/</a></p>
-<h2 id="copyright">Copyright</h2>
-<p><img src="images/copyright.png" alt="copyright"></p>
-<p>Attribution-NonCommercial-ShareAlike 4.0 International</p>
-<p>You are free to:</p>
-<ul>
-<li><p>Share &#x2014; copy and redistribute the material in any medium or format</p>
-</li>
-<li><p>Adapt &#x2014; remix, transform, and build upon the material</p>
-</li>
-</ul>
-<p>The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
-<p>Under the following terms:</p>
-<ul>
-<li><p>Attribution &#x2014; You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</p>
-</li>
-<li><p>NonCommercial &#x2014; You may not use the material for commercial purposes.</p>
-</li>
-<li><p>ShareAlike &#x2014; If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</p>
-</li>
-<li><p>No additional restrictions &#x2014; You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</p>
-</li>
-</ul>
-<p><strong>Notices:</strong></p>
-<p>You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.</p>
-<p>No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.</p>
+                                <h1 id="introduction">Introduction</h1>
+<h2 id="what-is-dbt">What is dbt?</h2>
+<p>dbt, when in full, stands for Data build tool. dbt is a tool that data scientists and analytical engineers use to transform data in their data warehouses. For now, just think of dbt much like a recipe. In a recipe, you have the instructions to cook your favourite meal, say a roasted chicken. Sure enough, your recipe will contain details on the optimal oven temperature, heating duration and setting the table! dbt works in much the same way. We define how we want to transform or build our data. Once we hit <code>run</code>, the magic happens.</p>
+<h2 id="encounter-with-dbt">Encounter with <code>dbt</code></h2>
+<p>How did I cross paths with dbt? Coming from the geographical sciences, my first experience with dbt, contrary to the many positive revs from online users, wasn&apos;t so good. Perhaps it was because a lot was on my desk back then, for I was having trouble piecing together all the different components that make dbt work, and how it works. It is only after some time, and several hard knocks in between, that I was able to get a semblance of what it does. </p>
+<p>Nevertheless, at least I got a few things. dbt could be used to create views of your tables in the data warehouse, it could perform tests and lastly, (the one I liked the most) it could be used to render your documentation!</p>
+<h2 id="dbt-from-the-professionals">dbt, from the professionals...</h2>
+<p>dbt, from the words of developers, is an open-source tool that analysts and data engineers use to transform data in their data warehouses. Data transformation is the process of converting data from its source format to the format required for analysis. The data transformation process is part of a three stage process known as Extract, Load and Transform (ELT). Before ELT, Extract, Transform, and Load (ETL) was the king. The former involves transferring data from the source, to the destination, such as a data warehouse or data lake and performing the transformation in there. The latter, ETL, though a traditional approach, involves first identifying the data, transforming it prior to landing it to the destination, in this case a data warehouse. </p>
+<p>Here is a better description of the Extract, Load and Transform keywords.</p>
+<p>Extract - this is the identification and reading of data from one or more sources, such as databases, internet, comma separated value (csv) files and the like.</p>
+<p>Load - just like you would pull up a weight into a lorry, this is the process of transferring data from the source to your data warehouse. </p>
+<p>Transform - this is the conversion of data from its state to a format that can be used by downstream users. </p>
+<p>You may have seen the term <em>data warehouse</em> coming up quite a number of times. A data warehouse is a data management system that stores current and historical data from multiple sources in a business friendly manner for easier insights and reporting. Examples of data warehouses are Google BigQuery, Snowflake, Amazon Redshift, Azure Synapse Analytics, IBM Db2 Warehouse and Firebolt. </p>
+<h2 id="why-use-dbt">Why use dbt?</h2>
+<p>If you work with data that needs to be version controlled, that is, it can be rolled back to a previous time, you need to work in dbt. If you want to standardize the data models created across teams, dbt is the tool of choice. If you also want a central place where your data work is also documented, dbt handles this quite well. In other words, dbt should be the swiss knife when working with large datasets and where you want to maintain modularity, order and documentation of your work.</p>
+<p>The below image summarises the role of dbt in your data processing work. </p>
+<p><img src="images/dbt.png" alt="The role of dbt"></p>
+<p>Source: <a href="https://www.startdataengineering.com/post/advantages-of-using-dbt-data-build-tool/" target="_blank">Reference</a></p>
 
                                 
                                 </section>
@@ -451,8 +439,12 @@
 
             
                 
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="01-intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Chapter 1">
+                
+                <a href="02-dbt-structure.html" class="navigation navigation-next " aria-label="Next page: Chapter 2">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -463,7 +455,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Chapter 1","level":"1.2","depth":1,"path":"01-intro.md","ref":"01-intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"README.md","mtime":"2026-01-30T18:06:00.001Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-30T18:46:51.546Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Chapter 1","level":"1.2","depth":1,"next":{"title":"Chapter 2","level":"1.3","depth":1,"path":"02-dbt-structure.md","ref":"02-dbt-structure.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"01-intro.md","mtime":"2024-12-03T18:58:38.214Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-30T18:46:51.546Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

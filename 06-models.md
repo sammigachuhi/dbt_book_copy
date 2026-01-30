@@ -144,11 +144,13 @@ The SQL statements in parentheses is what is referred to as [Common Table Expres
 
 The second model doesn't have much to provide but it introduces a new trick: the `ref` function.
 
+
 ```
 select *
 from {{ ref('my_first_dbt_model') }}
 where id = 1
 ```
+
 
 The `ref` function is part of the jinja templating language. It is used to reference a model that has been provided within the parentheses and enclosed with quotes `('')`. Therefore, in essence, our model simply returns the row(s) from `my_first_dbt_model` that contain the value `1` in the `id` column.
 

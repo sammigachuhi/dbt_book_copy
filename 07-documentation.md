@@ -136,7 +136,9 @@ However, imagine you were working with hundreds of models which use similar defi
 
 ## Using the `doc` function
 
+
 To use the `doc()` function, we write our definitions in a separate markdown `(.md)` file and place the descriptions within `{% docs <field-name> %}` <Description-inside-here> `{% enddocs %}` tags. For this tutorial, we created three markdown tables.
+
 
 * `references.md` - this contains the descriptions for our column names of interest
 
@@ -146,6 +148,7 @@ To use the `doc()` function, we write our definitions in a separate markdown `(.
 
 
 Here is what our `references.md` contains. As you can see, we have provided some textual information for some of our column names. We can also add some more style to our descriptions since they are now on a separate markdown. For example we could insert links, make the text italic, and bold if you wish!
+
 
 ```
 {% docs tripduration %}
@@ -169,7 +172,9 @@ Start Time, in NYC local time. As accurate as could ever be.
 --snip--
 ```
 
+
 The `tables.md` just contains a description of our `citi_trips_round` table. 
+
 
 ```
 {% docs citi_trips_round %}
@@ -178,6 +183,7 @@ This table contains the trip duration in minutes to one decimal place only.
 
 {% enddocs %}
 ```
+
 
 Now, in order to enable dbt reference these descriptions from our YAML file, we would simply use the `doc ()` function as shown below: 
 
@@ -201,7 +207,9 @@ Now, in order to enable dbt reference these descriptions from our YAML file, we 
 --snip--
 ```
 
+
 The file saved as `overview.md` in our project will be used to display the home page of our dbt documentation website. However, the homepage uses a different syntax, like so:
+
 
 ```
 {% docs __overview__ %}
@@ -212,7 +220,9 @@ Some more text here...
 
 ```
 
+
 Therefore, here is some dummy text for our overview page.
+
 
 ```
 {% docs __overview__ %}
@@ -226,6 +236,7 @@ Learning is not merely the acquisition of knowledge, but the cultivation of the 
 {% enddocs %}
 
 ```
+{% enddocs %}
 
 ## Images in dbt documentation
 
@@ -252,6 +263,7 @@ One can also create [custom overviews](https://docs.getdbt.com/docs/build/docume
 
 Below is our complete `overview.md` file. 
 
+
 ```
 {% docs __overview__ %}
 
@@ -266,6 +278,7 @@ Some more text here...
 {% enddocs %}
 
 ```
+{% enddocs %}
 
 ## Generating the document
 
